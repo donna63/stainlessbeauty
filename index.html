@@ -1,0 +1,2908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stainless Beauty Home | Premium Skincare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #a16281;
+            --color-primary-foreground: #ffffff;
+            --color-background: #fefefe;
+            --color-foreground: #1a1a1a;
+            --color-border: #e5e7eb;
+            --color-muted-foreground: #6b7280;
+            --color-secondary: #f9fafb;
+            --color-blush: #fce7f3;
+            --color-charcoal: #374151;
+            --color-cream: #fef3c7;
+            --color-gold: #d4af37;
+            --color-gold-light: #fef3c7;
+            --color-destructive: #dc2626;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-foreground);
+            background-color: var(--color-background);
+            overflow-x: hidden;
+        }
+        
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .font-body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-hero {
+            background: linear-gradient(135deg, rgba(253, 242, 248, 0.85) 0%, rgba(254, 252, 232, 0.85) 50%, rgba(240, 249, 255, 0.85) 100%);
+        }
+        
+        .shadow-elevated {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        .line-clamp-2 {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
+        
+        .line-clamp-3 {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+        }
+        
+        /* Animation Styles */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from { 
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        @keyframes slideInLeft {
+            from { 
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        
+        @keyframes rotate360 {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .animate-slide-in-right {
+            animation: slideInRight 0.6s ease-out forwards;
+        }
+        
+        .animate-slide-in-left {
+            animation: slideInLeft 0.6s ease-out forwards;
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .animate-pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        .animate-rotate {
+            animation: rotate360 20s linear infinite;
+        }
+        
+        .animate-fade-in-down {
+            animation: fadeInDown 0.5s ease-out forwards;
+        }
+        
+        /* Video Background */
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(161, 98, 129, 0.25) 0%, 
+                rgba(212, 175, 55, 0.2) 50%, 
+                rgba(252, 231, 243, 0.25) 100%);
+            backdrop-filter: blur(2px);
+            z-index: 0;
+        }
+        
+        /* Hero Image Animation */
+        .hero-image-container {
+            position: relative;
+            perspective: 1000px;
+        }
+        
+        .hero-image-3d {
+            transform-style: preserve-3d;
+            transform: rotateY(-10deg) rotateX(5deg);
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.25),
+                0 0 60px rgba(161, 98, 129, 0.4);
+            border: 8px solid white;
+        }
+        
+        .hero-image-container:hover .hero-image-3d {
+            transform: rotateY(0deg) rotateX(0deg);
+        }
+        
+        .floating-element {
+            position: absolute;
+            z-index: 1;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+        
+        /* Sidebar Styles */
+        .sidebar-category.active {
+            background-color: #fce7f3;
+            color: #a16281;
+            border-left: 4px solid #a16281;
+        }
+        
+        .sidebar-category.active .category-icon {
+            color: #a16281;
+        }
+        
+        /* Product Card Enhancement */
+        .product-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        /* Staggered Animation */
+        .stagger-delay-1 { animation-delay: 0.1s; }
+        .stagger-delay-2 { animation-delay: 0.2s; }
+        .stagger-delay-3 { animation-delay: 0.3s; }
+        .stagger-delay-4 { animation-delay: 0.4s; }
+        .stagger-delay-5 { animation-delay: 0.5s; }
+        
+        /* Mobile Menu Full Screen */
+        .mobile-menu-full {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: white;
+            z-index: 1000;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu-full.active {
+            transform: translateX(0);
+        }
+        
+        /* Mobile Nav Icon */
+        .mobile-nav-icon {
+            position: relative;
+            width: 30px;
+            height: 25px;
+            cursor: pointer;
+        }
+        
+        .mobile-nav-icon span {
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: #a16281;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-nav-icon span:nth-child(1) {
+            top: 0;
+        }
+        
+        .mobile-nav-icon span:nth-child(2) {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .mobile-nav-icon span:nth-child(3) {
+            bottom: 0;
+        }
+        
+        .mobile-nav-icon.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        
+        .mobile-nav-icon.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-nav-icon.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        
+        /* Particle Animation */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* Product Detail Modal */
+        .product-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .product-modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 1000px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: fadeInDown 0.4s ease-out;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .modal-close:hover {
+            background: #fce7f3;
+            transform: rotate(90deg);
+        }
+        
+        /* Glowing Effect for Hero */
+        .glow-effect {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(161, 98, 129, 0.15) 0%, transparent 70%);
+            filter: blur(40px);
+            z-index: 0;
+        }
+        
+        /* Improved Hero Section */
+        .hero-gradient-overlay {
+            background: linear-gradient(135deg, 
+                rgba(253, 242, 248, 0.95) 0%, 
+                rgba(254, 252, 232, 0.95) 50%, 
+                rgba(240, 249, 255, 0.95) 100%);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Component -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <!-- Mobile Menu Icon -->
+                <div id="mobile-menu-icon" class="lg:hidden mobile-nav-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <!-- Logo -->
+                <div class="flex-1 lg:flex-none flex justify-center lg:justify-start">
+                    <a href="#" class="flex flex-col items-center lg:items-start">
+                        <img style="width: 120px;" src="stainless-removebg-preview.png" alt="Stainless Beauty Home">
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="#shop" class="font-body text-sm tracking-wide text-gray-600 hover:text-gray-900 transition-colors duration-200">
+                        Shop
+                    </a>
+                    <a href="collection.html" class="font-body text-sm tracking-wide text-gray-600 hover:text-gray-900 transition-colors duration-200">
+                        Collections
+                    </a>
+                    <a href="#about" class="font-body text-sm tracking-wide text-gray-600 hover:text-gray-900 transition-colors duration-200">
+                        About
+                    </a>
+                    <a href="#contact" class="font-body text-sm tracking-wide text-gray-600 hover:text-gray-900 transition-colors duration-200">
+                        Contact
+                    </a>
+                </nav>
+
+                <!-- Right Actions -->
+                <div class="flex items-center gap-2 lg:gap-4">
+                    <button class="hidden lg:flex p-2 hover:bg-gray-100 rounded-full transition-colors">
+                        <i class="fas fa-search w-5 h-5 text-gray-700"></i>
+                    </button>
+                    <button class="hidden lg:flex p-2 hover:bg-gray-100 rounded-full transition-colors">
+                        <i class="fas fa-user w-5 h-5 text-gray-700"></i>
+                    </button>
+                    <button id="cart-button" class="relative p-2 hover:bg-gray-100 rounded-full transition-colors">
+                        <i class="fas fa-shopping-bag w-5 h-5 text-gray-700"></i>
+                        <span id="cart-count" class="absolute -top-1 -right-1 w-5 h-5 bg-pink-600 text-white text-xs rounded-full flex items-center justify-center font-medium hidden">
+                            0
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Full Screen Menu -->
+    <div id="mobile-full-menu" class="mobile-menu-full">
+        <div class="h-full flex flex-col">
+            <!-- Close Button -->
+            <div class="flex justify-end p-6">
+                <div id="close-mobile-menu" class="mobile-nav-icon active">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            
+            <!-- Menu Content -->
+            <div class="flex-1 flex flex-col items-center justify-center">
+                <div class="text-center space-y-8">
+                    <a href="#shop" class="block font-display text-3xl text-gray-900 hover:text-pink-600 transition-colors duration-200 py-2">
+                        Shop
+                    </a>
+                    <a href="collection.html" class="block font-display text-3xl text-gray-900 hover:text-pink-600 transition-colors duration-200 py-2">
+                        Collections
+                    </a>
+                    <a href="#about" class="block font-display text-3xl text-gray-900 hover:text-pink-600 transition-colors duration-200 py-2">
+                        About
+                    </a>
+                    <a href="#contact" class="block font-display text-3xl text-gray-900 hover:text-pink-600 transition-colors duration-200 py-2">
+                        Contact
+                    </a>
+                </div>
+                
+                <!-- Social Links -->
+                <div class="mt-16 flex gap-6">
+                    <a href="#" class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:bg-pink-50 transition-colors">
+                        <i class="fab fa-instagram w-5 h-5 text-gray-700"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:bg-pink-50 transition-colors">
+                        <i class="fab fa-facebook-f w-5 h-5 text-gray-700"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:bg-pink-50 transition-colors">
+                        <i class="fab fa-twitter w-5 h-5 text-gray-700"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="p-8 text-center border-t border-gray-200">
+                <p class="text-gray-600 font-body text-sm">
+                    Premium Skincare Collection
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div id="product-modal" class="product-modal">
+        <div class="modal-content">
+            <div class="modal-close" id="close-product-modal">
+                <i class="fas fa-times text-gray-700"></i>
+            </div>
+            <div id="product-modal-content">
+                <!-- Product details will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Drawer Component -->
+    <div id="cart-drawer" class="hidden">
+        <!-- Backdrop -->
+        <div id="cart-backdrop" class="fixed inset-0 bg-gray-900/50 backdrop-blur-sm z-50"></div>
+
+        <!-- Drawer -->
+        <div class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-xl z-50 animate-slide-in-right">
+            <div class="flex flex-col h-full">
+                <!-- Header -->
+                <div class="flex items-center justify-between p-6 border-b border-gray-200">
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-shopping-bag w-5 h-5 text-gray-900"></i>
+                        <h2 class="font-display text-xl font-medium text-gray-900">Your Cart</h2>
+                    </div>
+                    <button id="close-cart" class="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                        <i class="fas fa-times w-5 h-5 text-gray-700"></i>
+                    </button>
+                </div>
+
+                <!-- Cart Items -->
+                <div id="cart-items" class="flex-1 overflow-y-auto p-6">
+                    <!-- Cart items will be dynamically added here -->
+                    <div class="flex flex-col items-center justify-center h-full text-center">
+                        <i class="fas fa-shopping-bag w-16 h-16 text-gray-300 mb-4"></i>
+                        <p class="font-display text-xl text-gray-900 mb-2">Your cart is empty</p>
+                        <p class="font-body text-sm text-gray-600 mb-6">
+                            Discover our collection of premium skincare products.
+                        </p>
+                        <button id="continue-shopping" class="px-6 py-3 border border-gray-800 text-gray-800 font-body text-sm tracking-wide rounded-lg hover:bg-gray-50 transition-colors">
+                            Continue Shopping
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div id="cart-footer" class="hidden border-t border-gray-200 p-6 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="font-body text-sm text-gray-600">Subtotal</span>
+                        <span id="cart-total" class="font-display text-lg font-medium text-gray-900">
+                            €0.00
+                        </span>
+                    </div>
+                    <p class="font-body text-xs text-gray-600 text-center">
+                        Shipping and taxes calculated at checkout
+                    </p>
+                    <a href="checkout.html">
+                        <button class="w-full h-12 bg-gradient-to-r from-pink-600 to-pink-500 text-white font-body text-sm tracking-wide rounded-lg hover:opacity-90 transition-opacity">
+                        Checkout
+                    </button>
+                    </a>
+                    <button id="continue-shopping-2" class="w-full h-12 border border-gray-300 text-gray-700 font-body text-sm tracking-wide rounded-lg hover:bg-gray-50 transition-colors">
+                        Continue Shopping
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Component with Enhanced Background -->
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden hero-gradient-overlay">
+        <!-- Video Background - Better quality, relevant to skincare -->
+        <!-- <video autoplay muted loop playsinline class="video-background">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-beauty-product-spa-cosmetic-46985-large.mp4" type="video/mp4">
+            
+            <img src="https://images.unsplash.com/photo-1556228578-9c360e2d0b4a?w=1600&q=80" alt="Fallback hero image" class="absolute inset-0 w-full h-full object-cover">
+        </video> -->
+        
+        <!-- Video Overlay -->
+        <div class="video-overlay"></div>
+        
+        <!-- Glowing Effects -->
+        <div class="glow-effect animate-float" style="top: 20%; left: 10%; animation-delay: 0.5s;"></div>
+        <div class="glow-effect animate-float" style="top: 60%; right: 10%; background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%); animation-delay: 1s;"></div>
+        <div class="glow-effect animate-float" style="bottom: 20%; left: 30%; background: radial-gradient(circle, rgba(252, 231, 243, 0.15) 0%, transparent 70%); animation-delay: 1.5s;"></div>
+        
+        <!-- Animated Particles -->
+        <div id="particles-container" class="absolute inset-0 z-0"></div>
+        
+        <div class="container mx-auto px-4 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <!-- Text Content -->
+                <div class="text-center lg:text-left order-2 lg:order-1">
+                    <span class="inline-block font-body text-xs tracking-widest uppercase text-pink-600 mb-4 animate-fade-in">
+                        Reveal Your Natural Radiance
+                    </span>
+                    <h1 class="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light leading-tight text-gray-900 mb-6">
+                        <span class="animate-fade-in-up stagger-delay-1 block">Where Science</span>
+                        <span class="italic animate-fade-in-up stagger-delay-2 block">Meets Beauty</span>
+                    </h1>
+                    <p class="font-body text-gray-600 text-base lg:text-lg max-w-md mx-auto lg:mx-0 mb-8 leading-relaxed animate-fade-in-up stagger-delay-3">
+                        Discover our curated collection of premium skincare products 
+                        designed to enhance your natural glow with clean, effective ingredients.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up stagger-delay-4">
+                        <button class="group px-8 py-4 bg-gradient-to-r from-pink-600 to-pink-500 text-white font-body text-sm tracking-wide rounded-lg hover:opacity-90 transition-all flex items-center justify-center gap-2 animate-pulse-glow">
+                            Shop Collection
+                            <i class="fas fa-arrow-right w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                        <button class="px-8 py-4 border border-gray-800 text-gray-800 font-body text-sm tracking-wide rounded-lg hover:bg-gray-50 transition-colors">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hero Image with 3D Animation -->
+                <div class="order-1 lg:order-2 hero-image-container">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gradient-to-br from-pink-200 via-yellow-100 to-blue-100 rounded-full blur-3xl animate-pulse-glow"></div>
+                        
+                        <!-- Main Hero Image with 3D Effect -->
+                        <div class="hero-image-3d relative rounded-2xl overflow-hidden shadow-elevated">
+                            <img
+                                src="imagepretty.jpg"
+                                alt="Luxury skincare products with glowing effect"
+                                class="w-full h-auto"
+                                id="main-hero-image"
+                            />
+                            
+                            <!-- Glow Effect Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-pink-400/10 via-transparent to-yellow-400/10"></div>
+                            
+                            <!-- Floating Product Overlays -->
+                            <!-- <div class="absolute top-10 -left-6 bg-white/95 backdrop-blur-sm p-3 rounded-xl shadow-lg animate-float" style="animation-delay: 0.5s; z-index: 10;">
+                                <div class="w-16 h-16 rounded-lg overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=200&q=80" alt="Beauty Serum" class="w-full h-full object-cover">
+                                </div>
+                                <div class="absolute -top-2 -right-2 w-6 h-6 bg-pink-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-star text-white text-xs"></i>
+                                </div>
+                            </div> -->
+                            
+                            <!-- <div class="absolute -bottom-4 -right-4 bg-white/95 backdrop-blur-sm p-3 rounded-xl shadow-lg animate-float" style="animation-delay: 1s; z-index: 10;">
+                                <div class="w-20 h-20 rounded-lg overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=200&q=80" alt="Skincare Set" class="w-full h-full object-cover">
+                                </div>
+                                <div class="absolute -top-2 -right-2 w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-crown text-white text-xs"></i>
+                                </div>
+                            </div> -->
+                            
+                            <!-- <div class="absolute top-1/2 -right-6 bg-white/95 backdrop-blur-sm p-3 rounded-xl shadow-lg animate-float" style="animation-delay: 1.5s; z-index: 10;">
+                                <div class="w-14 h-14 rounded-lg overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=200&q=80" alt="Face Oil" class="w-full h-full object-cover">
+                                </div>
+                                <div class="absolute -top-1 -right-1 w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-gem text-white text-xs"></i>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
+    </section>
+
+    <!-- Sidebar Navigation for Categories -->
+    <div class="sticky top-20 z-40 bg-white border-b border-gray-200 py-3 lg:hidden">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto space-x-4 pb-2">
+                <button class="sidebar-category-mobile flex-shrink-0 px-4 py-2 rounded-lg bg-pink-50 text-pink-600 font-body text-sm font-medium" data-category="all">
+                    All Products
+                </button>
+                <button class="sidebar-category-mobile flex-shrink-0 px-4 py-2 rounded-lg text-gray-600 font-body text-sm hover:bg-gray-100" data-category="body-lotion">
+                    Body Lotions
+                </button>
+                <button class="sidebar-category-mobile flex-shrink-0 px-4 py-2 rounded-lg text-gray-600 font-body text-sm hover:bg-gray-100" data-category="oil">
+                    Oils
+                </button>
+                <button class="sidebar-category-mobile flex-shrink-0 px-4 py-2 rounded-lg text-gray-600 font-body text-sm hover:bg-gray-100" data-category="kid-oil">
+                    Kid Oils
+                </button>
+                <button class="sidebar-category-mobile flex-shrink-0 px-4 py-2 rounded-lg text-gray-600 font-body text-sm hover:bg-gray-100" data-category="face-care">
+                    Face Care
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content with Sidebar -->
+    <div class="container mx-auto px-4 lg:px-8 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Desktop Sidebar -->
+            <div class="hidden lg:block w-full lg:w-1/4 xl:w-1/5">
+                <div class="sticky top-24 bg-white rounded-xl shadow-soft p-6">
+                    <h3 class="font-display text-lg font-medium text-gray-900 mb-6">Categories</h3>
+                    
+                    <!-- Main Categories -->
+                    <div class="space-y-2 mb-8">
+                        <button class="sidebar-category w-full text-left px-4 py-3 rounded-lg flex items-center justify-between transition-all" data-category="all">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-boxes category-icon w-4 h-4 text-gray-400"></i>
+                                <span class="font-body text-sm">All Products</span>
+                            </div>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">23</span>
+                        </button>
+                        
+                        <button class="sidebar-category w-full text-left px-4 py-3 rounded-lg flex items-center justify-between transition-all" data-category="body-lotion">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-pump-soap category-icon w-4 h-4 text-gray-400"></i>
+                                <span class="font-body text-sm">Body Lotions</span>
+                            </div>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">10</span>
+                        </button>
+                        
+                        <button class="sidebar-category w-full text-left px-4 py-3 rounded-lg flex items-center justify-between transition-all" data-category="oil">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-oil-can category-icon w-4 h-4 text-gray-400"></i>
+                                <span class="font-body text-sm">Oils</span>
+                            </div>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">6</span>
+                        </button>
+                        
+                        <button class="sidebar-category w-full text-left px-4 py-3 rounded-lg flex items-center justify-between transition-all" data-category="kid-oil">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-baby category-icon w-4 h-4 text-gray-400"></i>
+                                <span class="font-body text-sm">Kid Oils</span>
+                            </div>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">4</span>
+                        </button>
+                        
+                        <button class="sidebar-category w-full text-left px-4 py-3 rounded-lg flex items-center justify-between transition-all" data-category="face-care">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-spa category-icon w-4 h-4 text-gray-400"></i>
+                                <span class="font-body text-sm">Face Care</span>
+                            </div>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">3</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Subcategories under Body Lotions -->
+                    <div class="mb-8">
+                        <h4 class="font-body text-xs font-medium text-gray-500 uppercase tracking-wider mb-3">Body Lotion Types</h4>
+                        <div class="space-y-1 pl-6">
+                            <button class="sidebar-subcategory w-full text-left px-3 py-2 rounded text-sm text-gray-600 hover:text-pink-600 hover:bg-pink-50 transition-all" data-category="whitening-lotion">
+                                <i class="fas fa-circle text-xs mr-2 opacity-50"></i>
+                                Whitening Lotions
+                            </button>
+                            <button class="sidebar-subcategory w-full text-left px-3 py-2 rounded text-sm text-gray-600 hover:text-pink-600 hover:bg-pink-50 transition-all" data-category="moisturizing-lotion">
+                                <i class="fas fa-circle text-xs mr-2 opacity-50"></i>
+                                Moisturizing Lotions
+                            </button>
+                            <button class="sidebar-subcategory w-full text-left px-3 py-2 rounded text-sm text-gray-600 hover:text-pink-600 hover:bg-pink-50 transition-all" data-category="brightening-lotion">
+                                <i class="fas fa-circle text-xs mr-2 opacity-50"></i>
+                                Brightening Lotions
+                            </button>
+                            <button class="sidebar-subcategory w-full text-left px-3 py-2 rounded text-sm text-gray-600 hover:text-pink-600 hover:bg-pink-50 transition-all" data-category="glowing-lotion">
+                                <i class="fas fa-circle text-xs mr-2 opacity-50"></i>
+                                Glowing Skin Lotions
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Subcategories under Oils -->
+                    <div class="mb-8">
+                        <h4 class="font-body text-xs font-medium text-gray-500 uppercase tracking-wider mb-3">Oil Types</h4>
+                        <div class="space-y-1 pl-6">
+                            <button class="sidebar-subcategory w-full text-left px-3 py-2 rounded text-sm text-gray-600 hover:text-pink-600 hover:bg-pink-50 transition-all" data-category="face-oil">
+                                <i class="fas fa-circle text-xs mr-2 opacity-50"></i>
+                                Face Oils
+                            </button>
+                            <button class="sidebar-subcategory w-full text-left px-3 py-2 rounded text-sm text-gray-600 hover:text-pink-600 hover:bg-pink-50 transition-all" data-category="body-oil">
+                                <i class="fas fa-circle text-xs mr-2 opacity-50"></i>
+                                Body Oils
+                            </button>
+                            <button class="sidebar-subcategory w-full text-left px-3 py-2 rounded text-sm text-gray-600 hover:text-pink-600 hover:bg-pink-50 transition-all" data-category="whitening-oil">
+                                <i class="fas fa-circle text-xs mr-2 opacity-50"></i>
+                                Whitening Oils
+                            </button>
+                            <button class="sidebar-subcategory w-full text-left px-3 py-2 rounded text-sm text-gray-600 hover:text-pink-600 hover:bg-pink-50 transition-all" data-category="argan-oil">
+                                <i class="fas fa-circle text-xs mr-2 opacity-50"></i>
+                                Argan Oils
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Subcategories under Kid Oils -->
+                    <div>
+                        <h4 class="font-body text-xs font-medium text-gray-500 uppercase tracking-wider mb-3">Kid Oil Types</h4>
+                        <div class="space-y-1 pl-6">
+                            <button class="sidebar-subcategory w-full text-left px-3 py-2 rounded text-sm text-gray-600 hover:text-pink-600 hover:bg-pink-50 transition-all" data-category="baby-massage-oil">
+                                <i class="fas fa-circle text-xs mr-2 opacity-50"></i>
+                                Baby Massage Oils
+                            </button>
+                            <button class="sidebar-subcategory w-full text-left px-3 py-2 rounded text-sm text-gray-600 hover:text-pink-600 hover:bg-pink-50 transition-all" data-category="moisturizing-kid-oil">
+                                <i class="fas fa-circle text-xs mr-2 opacity-50"></i>
+                                Moisturizing Oils
+                            </button>
+                            <button class="sidebar-subcategory w-full text-left px-3 py-2 rounded text-sm text-gray-600 hover:text-pink-600 hover:bg-pink-50 transition-all" data-category="soothing-kid-oil">
+                                <i class="fas fa-circle text-xs mr-2 opacity-50"></i>
+                                Soothing Oils
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Grid Section -->
+            <div class="w-full lg:w-3/4 xl:w-4/5">
+                <!-- Section Header -->
+                <div class="text-center mb-12 lg:mb-16 animate-fade-in-up">
+                    <span class="inline-block font-body text-xs tracking-widest uppercase text-pink-600 mb-4">
+                        Premium Collection
+                    </span>
+                    <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-light text-gray-900 mb-4">
+                        Curated for <span class="italic">Your Skin</span>
+                    </h2>
+                    <p class="font-body text-gray-600 max-w-xl mx-auto">
+                        Each product is carefully formulated with premium ingredients to deliver visible results.
+                    </p>
+                </div>
+
+                <!-- Product Grid -->
+                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8">
+                    <!-- Products will be dynamically added here -->
+                </div>
+
+                <!-- Expanded Collections Space -->
+                <div class="mt-20 animate-fade-in-up stagger-delay-1">
+                    <div class="text-center mb-12">
+                        <h3 class="font-display text-2xl md:text-3xl font-light text-gray-900 mb-4">
+                            Shop by <span class="italic">Collection</span>
+                        </h3>
+                        <p class="font-body text-gray-600 max-w-2xl mx-auto">
+                            Discover our specially curated collections designed for specific skincare needs.
+                        </p>
+                    </div>
+
+                    <!-- Collections Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Collection 1 -->
+                        <div class="group relative overflow-hidden rounded-xl bg-gradient-to-br from-pink-50 to-yellow-50 p-6 product-card">
+                            <div class="absolute top-4 right-4">
+                                <span class="inline-block px-3 py-1 bg-white/80 backdrop-blur-sm rounded-full text-xs font-body text-pink-600 font-medium">
+                                    10 Products
+                                </span>
+                            </div>
+                            <div class="mb-6">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-r from-pink-100 to-yellow-100 flex items-center justify-center mb-4 animate-rotate">
+                                    <i class="fas fa-star text-pink-500 w-6 h-6"></i>
+                                </div>
+                                <h4 class="font-display text-xl font-medium text-gray-900 mb-2">Whitening Collection</h4>
+                                <p class="font-body text-sm text-gray-600 line-clamp-2">
+                                    Advanced formulas for even skin tone and bright complexion
+                                </p>
+                            </div>
+                            <button class="w-full py-3 bg-white border border-gray-300 text-gray-700 font-body text-sm rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+                                View Collection
+                                <i class="fas fa-arrow-right w-3 h-3"></i>
+                            </button>
+                        </div>
+
+                        <!-- Collection 2 -->
+                        <div class="group relative overflow-hidden rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50 p-6 product-card">
+                            <div class="absolute top-4 right-4">
+                                <span class="inline-block px-3 py-1 bg-white/80 backdrop-blur-sm rounded-full text-xs font-body text-blue-600 font-medium">
+                                    6 Products
+                                </span>
+                            </div>
+                            <div class="mb-6">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-r from-blue-100 to-indigo-100 flex items-center justify-center mb-4 animate-rotate">
+                                    <i class="fas fa-tint text-blue-500 w-6 h-6"></i>
+                                </div>
+                                <h4 class="font-display text-xl font-medium text-gray-900 mb-2">Hydration Heroes</h4>
+                                <p class="font-body text-sm text-gray-600 line-clamp-2">
+                                    Deeply moisturizing formulas for dry and dehydrated skin
+                                </p>
+                            </div>
+                            <button class="w-full py-3 bg-white border border-gray-300 text-gray-700 font-body text-sm rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+                                View Collection
+                                <i class="fas fa-arrow-right w-3 h-3"></i>
+                            </button>
+                        </div>
+
+                        <!-- Collection 3 -->
+                        <div class="group relative overflow-hidden rounded-xl bg-gradient-to-br from-green-50 to-emerald-50 p-6 product-card">
+                            <div class="absolute top-4 right-4">
+                                <span class="inline-block px-3 py-1 bg-white/80 backdrop-blur-sm rounded-full text-xs font-body text-green-600 font-medium">
+                                    5 Products
+                                </span>
+                            </div>
+                            <div class="mb-6">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-r from-green-100 to-emerald-100 flex items-center justify-center mb-4 animate-rotate">
+                                    <i class="fas fa-leaf text-green-500 w-6 h-6"></i>
+                                </div>
+                                <h4 class="font-display text-xl font-medium text-gray-900 mb-2">Natural Glow</h4>
+                                <p class="font-body text-sm text-gray-600 line-clamp-2">
+                                    Botanical-based products for a radiant, healthy-looking skin
+                                </p>
+                            </div>
+                            <button class="w-full py-3 bg-white border border-gray-300 text-gray-700 font-body text-sm rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+                                View Collection
+                                <i class="fas fa-arrow-right w-3 h-3"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- More Collections Button -->
+                    <div class="text-center mt-10">
+                        <a href="collection.html" class="inline-flex items-center gap-2 px-6 py-3 border border-pink-600 text-pink-600 font-body text-sm tracking-wide rounded-lg hover:bg-pink-50 transition-colors">
+                            View All Collections
+                            <i class="fas fa-arrow-right w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Component -->
+    <section class="py-16 lg:py-24 bg-gray-50/50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+                <!-- Feature 1 -->
+                <div class="text-center animate-fade-in-up stagger-delay-1">
+                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-pink-100 mb-4">
+                        <i class="fas fa-leaf w-6 h-6 text-pink-600"></i>
+                    </div>
+                    <h3 class="font-display text-lg font-medium text-gray-900 mb-2">
+                        Clean Ingredients
+                    </h3>
+                    <p class="font-body text-sm text-gray-600">
+                        Formulated without harmful chemicals, parabens, or sulfates.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="text-center animate-fade-in-up stagger-delay-2">
+                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-pink-100 mb-4">
+                        <i class="fas fa-heart w-6 h-6 text-pink-600"></i>
+                    </div>
+                    <h3 class="font-display text-lg font-medium text-gray-900 mb-2">
+                        Cruelty-Free
+                    </h3>
+                    <p class="font-body text-sm text-gray-600">
+                        Never tested on animals. We believe in ethical beauty.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="text-center animate-fade-in-up stagger-delay-3">
+                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-pink-100 mb-4">
+                        <i class="fas fa-sparkles w-6 h-6 text-pink-600"></i>
+                    </div>
+                    <h3 class="font-display text-lg font-medium text-gray-900 mb-2">
+                        Proven Results
+                    </h3>
+                    <p class="font-body text-sm text-gray-600">
+                        Clinically tested formulas that deliver visible improvements.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="text-center animate-fade-in-up stagger-delay-4">
+                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-pink-100 mb-4">
+                        <i class="fas fa-shield-alt w-6 h-6 text-pink-600"></i>
+                    </div>
+                    <h3 class="font-display text-lg font-medium text-gray-900 mb-2">
+                        Dermatologist Approved
+                    </h3>
+                    <p class="font-body text-sm text-gray-600">
+                        Recommended by skincare professionals worldwide.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Component -->
+    <footer class="bg-gray-900 text-yellow-50 pt-16 pb-8">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
+                <!-- Brand Column -->
+                <div class="lg:col-span-1">
+                    <div class="mb-6">
+                        <span class="font-display text-2xl font-semibold tracking-wide">
+                            Stainless
+                        </span>
+                        <br />
+                        <span class="font-display text-sm tracking-widest uppercase opacity-70">
+                            Beauty Home
+                        </span>
+                    </div>
+                    <p class="font-body text-sm opacity-70 mb-6 leading-relaxed">
+                        Premium skincare crafted with clean, effective ingredients for your natural radiance.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full border border-yellow-50/30 flex items-center justify-center hover:bg-yellow-50/10 transition-colors">
+                            <i class="fab fa-instagram w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-yellow-50/30 flex items-center justify-center hover:bg-yellow-50/10 transition-colors">
+                            <i class="fab fa-facebook-f w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-yellow-50/30 flex items-center justify-center hover:bg-yellow-50/10 transition-colors">
+                            <i class="fab fa-twitter w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Shop Links -->
+                <div>
+                    <h4 class="font-display text-sm font-medium tracking-wide mb-4">
+                        Shop
+                    </h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="font-body text-sm opacity-70 hover:opacity-100 transition-opacity">All Products</a></li>
+                        <li><a href="#" class="font-body text-sm opacity-70 hover:opacity-100 transition-opacity">Body Lotions</a></li>
+                        <li><a href="#" class="font-body text-sm opacity-70 hover:opacity-100 transition-opacity">Oils</a></li>
+                        <li><a href="#" class="font-body text-sm opacity-70 hover:opacity-100 transition-opacity">Kid Oils</a></li>
+                        <li><a href="#" class="font-body text-sm opacity-70 hover:opacity-100 transition-opacity">Gift Sets</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company Links -->
+                <div>
+                    <h4 class="font-display text-sm font-medium tracking-wide mb-4">
+                        Company
+                    </h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="font-body text-sm opacity-70 hover:opacity-100 transition-opacity">About Us</a></li>
+                        <li><a href="#" class="font-body text-sm opacity-70 hover:opacity-100 transition-opacity">Our Story</a></li>
+                        <li><a href="#" class="font-body text-sm opacity-70 hover:opacity-100 transition-opacity">Sustainability</a></li>
+                        <li><a href="#" class="font-body text-sm opacity-70 hover:opacity-100 transition-opacity">Careers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support Links -->
+                <div>
+                    <h4 class="font-display text-sm font-medium tracking-wide mb-4">
+                        Support
+                    </h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="font-body text-sm opacity-70 hover:opacity-100 transition-opacity">Contact Us</a></li>
+                        <li><a href="#" class="font-body text-sm opacity-70 hover:opacity-100 transition-opacity">FAQs</a></li>
+                        <li><a href="#" class="font-body text-sm opacity-70 hover:opacity-100 transition-opacity">Shipping Info</a></li>
+                        <li><a href="#" class="font-body text-sm opacity-70 hover:opacity-100 transition-opacity">Returns</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal Links -->
+                <div>
+                    <h4 class="font-display text-sm font-medium tracking-wide mb-4">
+                        Legal
+                    </h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="font-body text-sm opacity-70 hover:opacity-100 transition-opacity">Privacy Policy</a></li>
+                        <li><a href="#" class="font-body text-sm opacity-70 hover:opacity-100 transition-opacity">Terms of Service</a></li>
+                        <li><a href="#" class="font-body text-sm opacity-70 hover:opacity-100 transition-opacity">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-yellow-50/20 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="font-body text-xs opacity-50">
+                        © 2026 Stainless Beauty Home. All rights reserved.
+                    </p>
+                    <div class="flex gap-6">
+                        <span class="font-body text-xs opacity-50">Visa</span>
+                        <span class="font-body text-xs opacity-50">Mastercard</span>
+                        <span class="font-body text-xs opacity-50">PayPal</span>
+                        <span class="font-body text-xs opacity-50">Apple Pay</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 px-6 py-3 bg-green-500 text-white rounded-lg shadow-lg font-body text-sm z-50 hidden animate-fade-in">
+        <div class="flex items-center gap-2">
+            <i class="fas fa-check-circle"></i>
+            <span id="toast-message">Product added to cart!</span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Product Data with enhanced categorization - 23 total products
+        const products = [
+            {
+                id: 1,
+                name: "Veetgold Alpha Arbutin Active Whitening Face & Body Oil SPF15",
+                category: "oil",
+                subcategory: "whitening-oil",
+                description: "Veetgold oils are made from natural pure plant extract to erase and clean black spots, wrinkles, pimples and dead cells from the body and face. Veetgold multivitamin oil corrector is formulated from mixture of different plants to give the face and body a natural glowing skin.",
+                longDescription: "Veetgold Alpha Arbutin Active Whitening Face & Body Oil SPF15 is a revolutionary skincare product designed to provide comprehensive skin care. Made from natural pure plant extracts, it effectively erases and cleans black spots, wrinkles, pimples, and dead cells from both face and body. The multivitamin oil corrector is formulated from a mixture of different plants to give your skin a natural glowing appearance. With added SPF15 protection, it shields your skin from harmful UV rays while working to improve skin texture and tone.",
+                ingredients: "Alpha Arbutin, Vitamin C, Vitamin E, Jojoba Oil, Sunflower Seed Oil, SPF15 Sun Protection",
+                benefits: ["Contains mango extract", "gentle and refreshing texture", "gently massage, soothes the skin", "brings pleasure to the skin", "replenishes moisture and leaves skin white and supple"],
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price: 30.00,
+                rating: 4.8,
+                reviews: 124,
+                image: "/image/alpha.png",
+                size: "1000ml"
+            },
+            {
+                id: 2,
+                name: "Pure Egyptian Magic Whitening Gold Lotion ",
+                category: "body-lotion",
+                subcategory: "whitening-lotion",
+                description: "This richly formulated lotion helps reduce the appearance of dark spots, age spots, blemishes, and pigmentation while moisturizing the skin.",
+                longDescription: "This richly formulated lotion helps reduce the appearance of dark spots, age spots, blemishes, and pigmentation while moisturizing the skin. Its blend, often enriched with egg yolk and L-glutathione, supports a tinted overall whitening effect on both face and body with visible improvement in tone and firmness in about 14 days of regular use.",
+                ingredients: "Gold Particles, Niacinamide, Shea Butter, Hyaluronic Acid, Vitamin B3, Glycerin",
+                benefits: ["Even skin tone", "Deep hydration", "Reduces pigmentation", "Anti-aging", "24-hour moisture"],
+                usage: "Apply generously to clean body skin twice daily. Massage in circular motions until absorbed.",
+                price: 20.00,
+                rating: 4.9,
+                reviews: 89,
+                image: "/image/gold.png",
+                size: "300ml"
+            },
+            {
+                id: 3,
+                name: "Carrot Magic Exclusive Whitening Body Milk",
+                category: "body-lotion",
+                subcategory: "brightening-lotion",
+                description: "Whitening face and body milk, high class whitening effect with glutathione, carrot oil, hyaluronic acid, kojic acid. SPF60.",
+                longDescription: "Carrot Magic Exclusive Whitening Body Milk is a premium formulation that combines the power of natural carrot extract with advanced whitening technology. Enriched with glutathione, carrot oil, hyaluronic acid, and kojic acid, this body milk provides superior whitening effects while keeping your skin hydrated and protected with SPF60. The light, fast-absorbing formula softens, fades, and evens complexion for younger, healthier-looking skin with visible results.",
+                ingredients: "Carrot Oil, Glutathione, Hyaluronic Acid, Kojic Acid, Vitamin A, SPF60",
+                benefits: ["High SPF protection", "Brightens complexion", "Deeply moisturizing", "Fades dark spots", "Improves skin elasticity"],
+                usage: "Apply to face and body before sun exposure. Reapply every 2 hours for maximum protection.",
+                price: 25.00,
+                rating: 4.7,
+                reviews: 203,
+                image: "/image/garrot.png",
+                size: "200ml"
+            },
+            // Additional products (truncated for brevity, but you have 20 more)
+            {
+                id: 4,
+                name: "Advanced Korean Bright & Dewy Radiance Body Lotion",
+                category: "body-lotion",
+                subcategory: "glowing-lotion",
+                description: "A 3-in-1 brightening, radiance, and moisture body lotion formulated with Alpha Arbutin, Niacinamide, Kojic Acid, Vitamin C.",
+                longDescription: "This Advanced Korean Bright & Dewy Radiance Body Lotion incorporates the latest Korean skincare technology to deliver a 3-in-1 solution for brightening, radiance, and deep moisture. Formulated with Alpha Arbutin, Niacinamide, Kojic Acid, and Vitamin C, it targets multiple skin concerns simultaneously. The lightweight formula absorbs instantly, leaving no sticky residue while providing all-day hydration and a natural dewy glow.",
+                ingredients: "Alpha Arbutin, Niacinamide, Kojic Acid, Vitamin C, Hyaluronic Acid, Ceramides",
+                benefits: ["Helps brighten and improve skin radiance", "Supports smoother, softer, and more luminous skin.", "Provides lasting moisture and hydration"],
+                usage: "Apply to damp skin after showering for best absorption. Use twice daily for optimal results.",
+                price: 38.00,
+                rating: 4.6,
+                reviews: 76,
+                image: "/image/advance.png",
+                size: "500ml"
+            },
+            // ... (Continue with other products - I've shown the pattern for detailed product information)
+            {
+                id: 5,
+                name: "Active White Body Lotion",
+                category: "body-lotion",
+                subcategory: "Body lotion",
+                description: "Lotion with the super active ingredient, Alpha arbutin for skin lightening and diminishing of pigmentation marks of various origin. Suitable for all skin tones.",
+                longDescription: "Lotion with the super active ingredient, Alpha arbutin for skin lightening and diminishing of pigmentation marks of various origin. Suitable for all skin tones.",
+                ingredients: "Rose Quartz Extract, Diamond Powder, Vitamin C, Ferulic Acid, Hyaluronic Acid",
+                benefits: ["Lighters overall skin tone", "block the melanin production process", "promotes an even skin tone", " nourishes the skin deep down", "limits the over pigmentation process", "decreases skin discolouration", "protects the skin"],
+                usage: "",
+                price: 30.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/active.png",
+                size: "500ml"
+            },
+            // Add remaining products with similar detailed structure
+
+              {
+                id: 6,
+                name: "Aqua Rich Bright+Balance Body Lotion",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "A fast-absorbing brightening and tone-balancing body lotion formulated with Niacinamide, Alpha Arbutin, and TXA to help correct dark spots, smooth skin texture, and promote a clearer, more even complexion.",
+                longDescription: "A fast-absorbing brightening and tone-balancing body lotion formulated with Niacinamide, Alpha Arbutin, and TXA to help correct dark spots, smooth skin texture, and promote a clearer, more even complexion.",
+                ingredients: "",
+                benefits: ["Helps fade dark spots and blemishes", "Brightens and evens out skin tone", "Improves skin texture and elasticity"],
+                usage: "Apply 2-3 drops to clean face before moisturizer. Gently pat until absorbed.",
+                price: 26.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/aqua.png",
+                size: "500ml"
+            },
+
+              {
+                id: 7,
+                name: "A White Secret Lightening Body Lotion",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "Brightens and evens skin tone, reducing the look of dark spots and blemishes.",
+                longDescription: "Brightens and evens skin tone, reducing the look of dark spots and blemishes.",
+                ingredients: "",
+                benefits: ["Deeply hydrates for soft, smooth skin all day.", "Helps remove and reduce pigmentation and blackheads.", "Lightweight, non-greasy texture for comfortable daily use. "],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance..",
+                price: 17.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/white.png",
+                size: "500ml"
+            },
+
+
+              {
+                id: 8,
+                name: "Advanced Purity Vitamin C & Turmeric Brightening Lotion",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "A professionally formulated brightening lotion enriched with Vitamin C, Turmeric, Retinol, Niacinamide, and Tretinoin to reduce dark spots, improve uneven skin tone, and restore a youthful glow with SPF 75++ sun protection.",
+                longDescription: "A professionally formulated brightening lotion enriched with Vitamin C, Turmeric, Retinol, Niacinamide, and Tretinoin to reduce dark spots, improve uneven skin tone, and restore a youthful glow with SPF 75++ sun protection.",
+                ingredients: "",
+                benefits: ["Helps fade dark spots, age spots, and discoloration.", "Refines skin texture and promotes a brighter, youthful appearance Provides high-level sun protection with SPF 75++"],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance..",
+                price: 27.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/purity.png",
+                size: "500ml"
+            },
+            
+
+              {
+                id: 9,
+                name: "Clini-Tone Body Butter Deep Moisturising Salicylic Acid Glow",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "Transform dry, dull skin with our Body Butter Deep Moisturising Salicylic Acid Glow Body Lotion. Enriched with nourishing butters and exfoliating salicylic acid, it hydrates, smooths, and leaves your skin visibly radiant.",
+                longDescription: "Transform dry, dull skin with our Body Butter Deep Moisturising Salicylic Acid Glow Body Lotion. Enriched with nourishing butters and exfoliating salicylic acid, it hydrates, smooths, and leaves your skin visibly radiant.",
+                ingredients: "",
+                benefits: ["Deeply moisturizes and nourishes dry, rough skin.", "Contains salicylic acid to gently exfoliate, unclog pores, and refine skin texture.", "Improves skin tone and enhances natural glow."],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance..",
+                price: 25.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/butter.png",
+                size: "400ml"
+            },
+
+               {
+                id: 10,
+                name: "Clini-Tone Body Butter Mild Lightening Glutathione Enriched All-Over Glow Body Lotion",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "Nourish and brighten with Body Butter Mild Lightening Glutathione Enriched All-Over Glow Body Lotion. This gentle, hydrating lotion supports a radiant, even-toned glow while keeping skin soft and supple.",
+                longDescription: "Nourish and brighten with Body Butter Mild Lightening Glutathione Enriched All-Over Glow Body Lotion. This gentle, hydrating lotion supports a radiant, even-toned glow while keeping skin soft and supple.",
+                ingredients: "",
+                benefits: ["Deeply moisturizes and nourishes dry, rough skin.", "Contains salicylic acid to gently exfoliate, unclog pores, and refine skin texture.", "Improves skin tone and enhances natural glow."],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance..",
+                price: 25.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/glow.png",
+                size: "400ml"
+            },
+
+
+               {
+                id: 11,
+                name: "Clini-Tone Body Butter Radiant Vitamin C Kojic Acid and Glutathione All-Over Glow",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "Brighten and nourish your skin with Body Butter Radiant Vitamin C Kojic Acid & Glutathione Glow Body Lotion. Infused with orange extract and arbutin, this all-over lotion hydrates deeply while visibly improving skin radiance and tone.",
+                longDescription: "Brighten and nourish your skin with Body Butter Radiant Vitamin C Kojic Acid & Glutathione Glow Body Lotion. Infused with orange extract and arbutin, this all-over lotion hydrates deeply while visibly improving skin radiance and tone.",
+                ingredients: "",
+                benefits: ["Deeply moisturizes and nourishes dry, rough skin.", "Contains salicylic acid to gently exfoliate, unclog pores, and refine skin texture.", "Improves skin tone and enhances natural glow."],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance..",
+                price: 25.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/rad.png",
+                size: "400ml"
+            },
+
+             {
+                id: 12,
+                name: "European White Carrot Face & Body Lotion",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "A fast-acting carrot-based brightening cream for face and body, enriched with Vitamin C, Kojic Acid, Glutathione, and botanical oils to help fade dark spots, improve skin tone, and protect against sun damage.",
+                longDescription: "A fast-acting carrot-based brightening cream for face and body, enriched with Vitamin C, Kojic Acid, Glutathione, and botanical oils to help fade dark spots, improve skin tone, and protect against sun damage.",
+                ingredients: "",
+                benefits: ["Brightens and evens out skin tone while fading dark spots.", "Helps improve skin texture, glow, and smoothness.", "Protects the skin from sun damage with SPF 50+"],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance..",
+                price: 27.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/face.jpeg",
+                size: "500ml"
+            },
+
+             {
+                id: 13,
+                name: "European White Gold Body Milk",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "A powerful toning milk formulated with Alpha Arbutin and Retinol to visibly brighten, even skin tone, and improve skin texture within 7 days.",
+                longDescription: "A powerful toning milk formulated with Alpha Arbutin and Retinol to visibly brighten, even skin tone, and improve skin texture within 7 days.",
+                ingredients: "",
+                benefits: ["Helps brighten and unify uneven skin tone", "Supports the reduction of dark spots, acne marks, and dullness Enhances overall skin glow and smoothness"],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 27.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/golden.jpeg",
+                size: "500ml"
+            },
+
+             {
+                id: 14,
+                name: "European White Half Cast Body Milk",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "A premium brightening body milk formulated with Glutathione, Gluta-C 24,000 mg, Kojic Acid, botanical oils, and plant extracts to help unify skin tone, fade dark spots, and enhance skin brightness.",
+                longDescription: "A premium brightening body milk formulated with Glutathione, Gluta-C 24,000 mg, Kojic Acid, botanical oils, and plant extracts to help unify skin tone, fade dark spots, and enhance skin brightness.",
+                ingredients: "",
+                benefits: ["Helps brighten and unify uneven skin tone", "Supports the reduction of dark spots, acne marks, and dullness Enhances overall skin glow and smoothness"],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 27.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/half.jpeg",
+                size: "500ml"
+            },
+
+             {
+                id: 15,
+                name: "Advanced Korean Bright & Moisture Body Lotion",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "A brightening, glowing, and exfoliating body lotion formulated with Alpha Arbutin, Niacinamide, Kojic Acid, Vitamin C, and Azelaic Acid to promote radiant, smooth, and even-toned skin.",
+                longDescription: "A brightening, glowing, and exfoliating body lotion formulated with Alpha Arbutin, Niacinamide, Kojic Acid, Vitamin C, and Azelaic Acid to promote radiant, smooth, and even-toned skin.",
+                ingredients: "",
+                benefits: ["Brightens and evens out skin tone Moisturizes while improving skin texture", "texture Helps promote smoother, glowing, healthier-looking skin"],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 27.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/kor.png",
+                size: "500ml"
+            },
+
+
+             {
+                id: 16,
+                name: "Lumine Brightening + Exfoliating Vitamin C Face & Body Milk",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "Lumine Vitamin C + Xtra superdose skin boost & blend complexion face and body milk.",
+                longDescription: "Lumine Vitamin C + Xtra superdose skin boost & blend complexion face and body milk.",
+                ingredients: "",
+                benefits: ["anto dark spots", "promotes more healthy & radiant skin glow. Great for normal and dry skin.","clean & clear blemishes,"],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 25.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/lum.png",
+                size: "400ml"
+            },
+
+              {
+                id: 17,
+                name: "No Spot Gold 24K Extra Whitening Body Milk",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "Extra whitening body milk. High kojic and glut rich skin beautifying and renewing lotion. Visibly brightens to even skin tone, while providing antioxidant benefits. Helps restore the protective skin barriers. Allergy tested.",
+                longDescription: "Extra whitening body milk. High kojic and glut rich skin beautifying and renewing lotion. Visibly brightens to even skin tone, while providing antioxidant benefits. Helps restore the protective skin barriers. Allergy tested.",
+                ingredients: "",
+                benefits: ["Anti dark spots", "promotes more healthy & radiant skin glow. Great for normal and dry skin.","clean & clear blemishes,"],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 26.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/spot.png",
+                size: "500ml"
+            },
+
+
+            {
+                id: 18,
+                name: "Skin Secret Halfcast Whitening Milk Body Lotion",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "Skin Secret Halfcast Whitening Milk Body Lotion is a powerful skin-brightening moisturizer that deeply nourishes and helps fade dark spots, uneven tone, and blemishes — revealing radiant, smooth, and visibly lighter skin. Extra strength with glutathione and arbutin.",
+                longDescription: "Skin Secret Halfcast Whitening Milk Body Lotion is a powerful skin-brightening moisturizer that deeply nourishes and helps fade dark spots, uneven tone, and blemishes — revealing radiant, smooth, and visibly lighter skin. Extra strength with glutathione and arbutin.",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 26.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/cast.png",
+                size: "500ml"
+            },
+
+
+
+            {
+                id: 19,
+                name: "Tera Irene’s Lait Injection Super Whitening Body lotion",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "This lotion helps to fade dark pigment and clarifying dark spots. Powerful activities work in synergy to give you the look you are looking for. It gives clear uniform and smooth skin.",
+                longDescription: "This lotion helps to fade dark pigment and clarifying dark spots. Powerful activities work in synergy to give you the look you are looking for. It gives clear uniform and smooth skin.",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 25.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/ren.png",
+                size: "500ml"
+            },
+
+            {
+                id: 20,
+                name: "Easy Glow Gold Strong Gluta-C Body Milk",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "This unique care Easy Glow Injection Gold lotion will bring out your beauty by hydrating your skin.",
+                longDescription: "This unique care Easy Glow Injection Gold lotion will bring out your beauty by hydrating your skin.",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 27.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/easy.png",
+                size: "500ml"
+            },
+
+             {
+                id: 21,
+                name: "B.B Clear Whitening Body Lotion 5 in 1",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "B.B.Clear combines de-pigmenting plant-base ingredients with exfoliating efficiency  of fruity acids. it improves the appearance of skin and help repair dark spots and sun damage for younger-looking, silky skin. it lighten your skin while revitalizes and makes it smooth and beautiful radiance. Adapted to all skin types",
+                longDescription: "B.B.Clear combines de-pigmenting plant-base ingredients with exfoliating efficiency  of fruity acids. it improves the appearance of skin and help repair dark spots and sun damage for younger-looking, silky skin. it lighten your skin while revitalizes and makes it smooth and beautiful radiance. Adapted to all skin types",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 16.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/bb.png",
+                size: "300ml"
+            },
+
+            {
+                id: 22,
+                name: "LightUp Beauty Lotion",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: "",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 16.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/up.png",
+                size: "400ml"
+            },
+
+             {
+                id: 23,
+                name: "Abidjanaise Lightening Treating Body Lotion ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: "",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 27.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/abid.png",
+                size: "500ml"
+            },
+
+             {
+                id: 24,
+                name: "Perfect Glow Brightening Lotion  ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: "",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 15.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/perfect.png",
+                size: "500ml"
+            },
+
+             {
+                id: 25,
+                name: "Lemon Clear beauty lotion",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: "",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 18.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/lemon.png",
+                size: "500ml"
+            },
+
+             {
+                id: 26,
+                name: "PURE CARROT KOJIC & CARROT OIL BASED WHITENING BODY LOTION ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: "",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 22.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/true.png",
+                size: "450ml"
+            },
+
+             {
+                id: 27,
+                name: "Piment Doux Classique Lightening Body Milk ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: "",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 19.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/piment.png",
+                size: "450ml"
+            },
+
+
+             {
+                id: 28,
+                name: "PURE WHITE GOLD GLOWING  ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: "",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 19.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/pu.png",
+                size: "400ml"
+            },
+
+
+                {
+                id: 29,
+                name: "F&W Exclusive Whitenizer Body Lotion  ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: "",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 24.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/fair.png",
+                size: "500ml"
+            },
+
+             {
+                id: 30,
+                name: "Fair and White 2: Gold Revitalizing ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: "",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 22.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/miss.jpeg",
+                size: "500ml"
+            },
+
+
+             {
+                id: 31,
+                name: "Filipino Whitening Lotion With Alpha Arbutin ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: "",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 32.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/fill.png",
+                size: "450ml"
+            },
+
+               {
+                id: 32,
+                name: "Filipino Strong Whitening Lotion ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: "",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 35.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/fi.png",
+                size: "450ml"
+            },
+
+
+              {
+                id: 33,
+                name: "Clear Essence Skin Beautifying Milk Lotion ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "Unlock the secret to beautifully radiant skin with Clear Essence Skin Beautifying Milk Lotion. This exceptional skincare product is expertly crafted to provide you with a nourishing and lightening solution that enhances your natural beauty.",
+                longDescription: "Unlock the secret to beautifully radiant skin with Clear Essence Skin Beautifying Milk Lotion. This exceptional skincare product is expertly crafted to provide you with a nourishing and lightening solution that enhances your natural beauty.",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 23.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/ski.png",
+                size: "450ml"
+            },
+
+               {
+                id: 34,
+                name: "New Light Skin Whitening Lotion with Zaban Extract ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: "",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 24.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/new.png",
+                size: "400ml"
+            },
+
+             {
+                id: 35,
+                name: "Paw Paw Lotion ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: "",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 19.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/paw.png",
+                size: "300ml"
+            },
+
+            {
+                id: 36,
+                name: "Razac Hand & Body Lotion 16oz",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "Experience the transformative power of Razac Hand & Body Lotion in a generous 16oz size. This trusted lotion is designed to provide your skin with intense hydration, leaving it irresistibly smooth and soft.",
+                longDescription: "Experience the transformative power of Razac Hand & Body Lotion in a generous 16oz size. This trusted lotion is designed to provide your skin with intense hydration, leaving it irresistibly smooth and soft.",
+                ingredients: "",
+                benefits: ["Convenient 16oz size for extended use.", "Provides deep hydration for your skin.", "Lightweight, non-greasy formula.", "Suitable for both hands and body.", "Ideal for all skin types."],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 8.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/razac.png",
+                size: "300ml"
+            },
+
+             {
+                id: 37,
+                name: "Ever Sheen Cocoa Butter Hand And Body Lotion",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "Experience the luxurious indulgence of Ever Sheen Cocoa Butter Hand and Body Lotion in a generous 500ml size. This exceptional lotion is meticulously crafted to provide your skin with the ultimate hydration and nourishment, leaving it feeling velvety-smooth and beautifully scented.",
+                longDescription: "Experience the luxurious indulgence of Ever Sheen Cocoa Butter Hand and Body Lotion in a generous 500ml size. This exceptional lotion is meticulously crafted to provide your skin with the ultimate hydration and nourishment, leaving it feeling velvety-smooth and beautifully scented.Enriched with the goodness of cocoa butter, this lotion offers deep moisturization for your hands and body. Its lightweight formula absorbs quickly, ensuring that your skin is pampered without any greasy residue.",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 8.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/but.png",
+                size: "500ml"
+            },
+
+             {
+                id: 38,
+                name: "Jaune D'oeuf Lait Traitant And Clarifiant Milk",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "Elevate your skincare routine with Jaune D'oeuf Lait Traitant and Clarifiant Milk, a specialized treatment milk enriched with unique clarifying properties, now available in a generous 450ml size. This meticulously crafted milk is designed to provide your skin with deep nourishment and a clarifying touch, leaving it refreshed, revitalized, and beautifully cared for.",
+                longDescription: "Elevate your skincare routine with Jaune D'oeuf Lait Traitant and Clarifiant Milk, a specialized treatment milk enriched with unique clarifying properties, now available in a generous 450ml size. This meticulously crafted milk is designed to provide your skin with deep nourishment and a clarifying touch, leaving it refreshed, revitalized, and beautifully cared for.",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 20.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/jan.png",
+                size: "450ml"
+            },
+
+               {
+                id: 39,
+                name: "Bron Tone Maxi Tone Fade Milk With Cocoa Butter & Honey",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "Bron Tone Maxi Tone Fade Milk combines the benefits of Cocoa Butter and Honey to offer deep moisturization while assisting in reducing the appearance of dark spots and blemishes, promoting a more uniform and glowing skin tone. Its lightweight formula is easily absorbed, making it ideal for daily use.",
+                longDescription: "Bron Tone Maxi Tone Fade Milk combines the benefits of Cocoa Butter and Honey to offer deep moisturization while assisting in reducing the appearance of dark spots and blemishes, promoting a more uniform and glowing skin tone. Its lightweight formula is easily absorbed, making it ideal for daily use.",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 18.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/bron.png",
+                size: "300ml"
+            },
+
+
+               {
+                id: 40,
+                name: "Qei+ Paris Active Harmonie Réparateur Body Lotion",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "QEI+ has developed a body lotion with carrot extract from the Active Harmonie range, which perfumes your skin. Thanks to a blend of plant extracts with brightening properties, your skin will be brighter and its complexion more",
+                longDescription: "QEI+ has developed a body lotion with carrot extract from the Active Harmonie range, which perfumes your skin. Thanks to a blend of plant extracts with brightening properties, your skin will be brighter and its complexion more.",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 34.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/qei.png",
+                size: "500ml"
+            },
+
+
+                 {
+                id: 41,
+                name: "55H+ Harmony Reparateur ( Lightening Body Lotion ) ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "55H+ Harmony Repair Lightening Body Lotion A rich and replenishing body lotion that deeply moisturizes, repairs, and brightens the skin. Enriched with active brightening agents and nourishing ingredients, it helps reduce dark spots and uneven skin tone, leaving skin soft, smooth, and radiant. Suitable for daily use to achieve a radiant and even complexion.",
+                longDescription: "55H+ Harmony Repair Lightening Body Lotion A rich and replenishing body lotion that deeply moisturizes, repairs, and brightens the skin. Enriched with active brightening agents and nourishing ingredients, it helps reduce dark spots and uneven skin tone, leaving skin soft, smooth, and radiant. Suitable for daily use to achieve a radiant and even complexion.",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 25.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/55.png",
+                size: "500ml"
+            },
+
+
+                {
+                id: 42,
+                name: "Fair & White Carrot Lotion ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: " Fair & White Carrot Lotion 485ml A nourishing and brightening lotion for a glowing, even complexion! Fair & White Carrot Lotion, with its gentle and sweet fragrance, contains a brightening agent combined with carrot oil to clarify the skin tone while nourishing the body. Carrot oil is rich in nourishing, firming, and antioxidant properties. It helps your skin appear radiant, smooth, and clear.",
+                longDescription: "Fair & White Carrot Lotion 485ml. A nourishing and brightening lotion for a glowing, even complexion! Fair & White Carrot Lotion, with its gentle and sweet fragrance, contains a brightening agent combined with carrot oil to clarify the skin tone while nourishing the body. Carrot oil is rich in nourishing, firming, and antioxidant properties. It helps your skin appear radiant, smooth, and clear.",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 14.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/fw.png",
+                size: "485ml"
+            },
+
+             {
+                id: 43,
+                name: "Pr. Francoise Bedon Carotte Lightening Body Lotion  ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: " Pr. Françoise Bedon Lait Eclaircissant Nourishing Moisturizing Care is a lightening body lotion that contains plant extracts, carrot oil and vitamin E. A nourishing moisturizer made from plants, carrot oil and vitamin E. Plant extracts and carrot oil act in synergy to provide your skin with immediate and long-lasting hydration. Thanks to the high content of beta-carotene, which is transformed by the body into vitamin A, your skin can better defend itself against the daily attacks of pollution, wind and cold, and your complexion gains luminosity and health. . In addition, vitamin E fights free radicals, responsible for premature aging and the formation of wrinkles. Plant extracts clarify your complexion and restore its original",
+                longDescription: "Pr. Françoise Bedon Lait Eclaircissant Nourishing Moisturizing Care is a lightening body lotion that contains plant extracts, carrot oil and vitamin E. A nourishing moisturizer made from plants, carrot oil and vitamin E. Plant extracts and carrot oil act in synergy to provide your skin with immediate and long-lasting hydration. Thanks to the high content of beta-carotene, which is transformed by the body into vitamin A, your skin can better defend itself against the daily attacks of pollution, wind and cold, and your complexion gains luminosity and health. . In addition, vitamin E fights free radicals, responsible for premature aging and the formation of wrinkles. Plant extracts clarify your complexion and restore its original",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 30.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/p.png",
+                size: "500ml"
+            },
+
+             {
+                id: 44,
+                name: "Fair & White So Carrot Brightening  ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: " ",
+                longDescription: "",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 17.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/so.png",
+                size: "500ml"
+            },
+
+            {
+                id: 45,
+                name: "Fair & White So White Hydra Sweet – Body Milk   ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "Deep hydration for dry skin with a sweet, comforting scent.So White Hydra Sweet Body Milk is designed for dry skin, delivering moisture and softness with a non-greasy feel that absorbs easily. ",
+                longDescription: " Deep hydration for dry skin with a sweet, comforting scent.So White Hydra Sweet Body Milk is designed for dry skin, delivering moisture and softness with a non-greasy feel that absorbs easily.",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 16.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/fr.png",
+                size: "500ml"
+            },
+
+              {
+                id: 46,
+                name: "Fair & White So White Skin Perfector – Body Milk   ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "Daily moisture + glow for softer, smoother-looking skin.This body milk helps hydrate and soften the skin while supporting a more even-looking, radiant appearance—perfect for everyday body care. ",
+                longDescription: " Daily moisture + glow for softer, smoother-looking skin.This body milk helps hydrate and soften the skin while supporting a more even-looking, radiant appearance—perfect for everyday body care.",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 17.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/hy.png",
+                size: "500ml"
+            },
+
+             {
+                id: 47,
+                name: "Queen Elisabeth Coca Butter Hand & Body Cream   ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: " ",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 8.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/co.png",
+                size: "500ml"
+            },
+
+               {
+                id: 48,
+                name: "Pr. Francoise Bedon Lightening Milk Power  ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: " ",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 29.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/lait.png",
+                size: "500ml"
+            },
+
+             {
+                id: 49,
+                name: "Pr. Francoise Bedon Carotte Lightening Body Lotion  ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "Pr. Françoise Bedon Lait Eclaircissant Nourishing Moisturizing Care is a lightening body lotion that contains plant extracts, carrot oil and vitamin E. A nourishing moisturizer made from plants, carrot oil and vitamin E. Plant extracts and carrot oil act in synergy to provide your skin with immediate and long-lasting hydration. Thanks to the high content of beta-carotene, which is transformed by the body into vitamin A, your skin can better defend itself against the daily attacks of pollution, wind and cold, and your complexion gains luminosity and health. . In addition, vitamin E fights free radicals, responsible for premature aging and the formation of wrinkles. Plant extracts clarify your complexion and restore its original",
+                longDescription: "Pr. Françoise Bedon Lait Eclaircissant Nourishing Moisturizing Care is a lightening body lotion that contains plant extracts, carrot oil and vitamin E. A nourishing moisturizer made from plants, carrot oil and vitamin E. Plant extracts and carrot oil act in synergy to provide your skin with immediate and long-lasting hydration. Thanks to the high content of beta-carotene, which is transformed by the body into vitamin A, your skin can better defend itself against the daily attacks of pollution, wind and cold, and your complexion gains luminosity and health. . In addition, vitamin E fights free radicals, responsible for premature aging and the formation of wrinkles. Plant extracts clarify your complexion and restore its original ",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 29.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/caro.png",
+                size: "500ml"
+            },
+
+            {
+                id: 50,
+                name: "Fair and White Miss White Carrot Brightening Body Lotion ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: " ",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 14.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/sk.png",
+                size: "500ml"
+            },
+
+             {
+                id: 51,
+                name: "Fair & White GOLD 2 Revitalizing Body Lotion",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: " ",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 24.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/gd.png",
+                size: "500ml"
+            },
+
+            {
+                id: 52,
+                name: " White Express Extra Whitening Milk 5 Days",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: " ",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 16.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/we.png",
+                size: "500ml"
+            },
+
+             {
+                id: 53,
+                name: " Fair & White GOLD 1 – AHA Brightening Body Lotion ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: " ",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 15.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/fg.png",
+                size: "350ml"
+            },
+
+            {
+                id: 54,
+                name: " Fair & White Maxi Tone Body Milk ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: " ",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 11.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/sm.png",
+                size: "250ml"
+            },
+
+              {
+                id: 55,
+                name: " Clairissime Phyto Complex SK Lightening Body Milk  ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: " ",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 12.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/cla.png",
+                size: "500ml"
+            },
+
+              {
+                id: 56,
+                name: " Clairissime Body Clear Complexion Fruit Acids Lotion  ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "",
+                longDescription: " ",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 11.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/clear.png",
+                size: "500ml"
+            },
+
+
+              {
+                id: 57,
+                name: " Skin by Zaron Vitamin C Brightening/Moisturizing Body ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "Skin by Zaron Vitamin C Brightening/Moisturizing Body Lotion. This body lotion is designed to brighten, hydrate, and rejuvenate the skin. It contains key ingredients such as Vitamin C, Alpha Arbutin, Collagen, Niacinamide, Kojic Acid, and Mother of Pearl Extracts. Benefits include fading dark spots and blemishes, reducing the appearance of wrinkles, boosting collagen production, and evening out skin tone. ",
+                longDescription: " Skin by Zaron Vitamin C Brightening/Moisturizing Body Lotion. This body lotion is designed to brighten, hydrate, and rejuvenate the skin. It contains key ingredients such as Vitamin C, Alpha Arbutin, Collagen, Niacinamide, Kojic Acid, and Mother of Pearl Extracts. Benefits include fading dark spots and blemishes, reducing the appearance of wrinkles, boosting collagen production, and evening out skin tone. ",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 30.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/skib.png",
+                size: "500ml"
+            },
+
+              {
+                id: 58,
+                name: " ACTIVE CAVIAR DRIP ARBUTIN LICORICE LOTION",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "ACTIVE CAVIAR DRIP ARBUTIN LICORICE. STRONG WHITENING LOTION. ARBUTIN EVEN OUT AND BRIGHTENS SKIN TONE LIGHTENS DARKEN AREAS & CAN HELP WITH APPERANCE OF SCARS LICORICE REMOVE EXCESS MELANIN BRIGHTENS THE SKIN IN ANOTHER WAY. THIS LOTION CONTAINS LIACTIVE CAVIAR DRIP ARBUTIN LICORICE LOTION 444MLQURITIN & ACTIVE COMPOUND THAT HELPS TO REMOVE EXISTING MELANIN IN THE SKIN. ",
+                longDescription: "ACTIVE CAVIAR DRIP ARBUTIN LICORICE. STRONG WHITENING LOTION. ARBUTIN EVEN OUT AND BRIGHTENS SKIN TONE LIGHTENS DARKEN AREAS & CAN HELP WITH APPERANCE OF SCARS LICORICE REMOVE EXCESS MELANIN BRIGHTENS THE SKIN IN ANOTHER WAY. THIS LOTION CONTAINS LIACTIVE CAVIAR DRIP ARBUTIN LICORICE LOTION 444MLQURITIN & ACTIVE COMPOUND THAT HELPS TO REMOVE EXISTING MELANIN IN THE SKIN. ",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 26.00,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/act.png",
+                size: "444ml"
+            },
+
+               {
+                id: 60,
+                name: " ACTIVE CAVIAR DRIP ARBUTIN LICORICE LOTION ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: "ACTIVE CAVIAR DRIP ARBUTIN LICORICE. STRONG WHITENING LOTION. ARBUTIN EVEN OUT AND BRIGHTENS SKIN TONE LIGHTENS DARKEN AREAS & CAN HELP WITH APPERANCE OF SCARS LICORICE REMOVE EXCESS MELANIN BRIGHTENS THE SKIN IN ANOTHER WAY. THIS LOTION CONTAINS LIACTIVE CAVIAR DRIP ARBUTIN LICORICE LOTION 444MLQURITIN & ACTIVE COMPOUND THAT HELPS TO REMOVE EXISTING MELANIN IN THE SKIN. ",
+                longDescription: "ACTIVE CAVIAR DRIP ARBUTIN LICORICE. STRONG WHITENING LOTION. ARBUTIN EVEN OUT AND BRIGHTENS SKIN TONE LIGHTENS DARKEN AREAS & CAN HELP WITH APPERANCE OF SCARS LICORICE REMOVE EXCESS MELANIN BRIGHTENS THE SKIN IN ANOTHER WAY. THIS LOTION CONTAINS LIACTIVE CAVIAR DRIP ARBUTIN LICORICE LOTION 444MLQURITIN & ACTIVE COMPOUND THAT HELPS TO REMOVE EXISTING MELANIN IN THE SKIN. ",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 25.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/ac.png",
+                size: "444ml"
+            },
+
+            {
+                id: 61,
+                name: " Skin Doctor Carrot Glow Whitening Lotion  ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: " ",
+                longDescription: " ",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 22.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/doc.png",
+                size: "500ml"
+            },
+
+            {
+                id: 62,
+                name: "Pure Carrot Gold Aburtin Fair & Lightening Lotion  ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: " ",
+                longDescription: " ",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 23.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/pc.png",
+                size: "500ml"
+            },
+
+             {
+                id: 63,
+                name: "A-M Glow Toning Beauty Milk Lotion   ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: " ",
+                longDescription: " ",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 25.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/it.png",
+                size: "500ml"
+            },
+
+              {
+                id: 64,
+                name: "Lemon-Glow-Ultimate-Lightening-Beauty-Milk    ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: " ",
+                longDescription: " ",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 110.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/ul.png",
+                size: "500ml"
+            },
+
+             {
+                id: 65,
+                name: "Pure-Glow-Maximum-Strength-Whitening-Beauty lotion    ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: " ",
+                longDescription: " ",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 120.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/ull.png",
+                size: "500ml"
+            },
+
+              {
+                id: 66,
+                name: "QEI Paris Extreme Shine Carotte Lotion    ",
+                category: "body-lotion",
+                subcategory: "Body Lotion",
+                description: " Extreme Shine, a must-have body lotion that lightens skin tone and contains carrot extract, was created by QEI+, a company that is always innovating.",
+                longDescription: "Extreme Shine, a must-have body lotion that lightens skin tone and contains carrot extract, was created by QEI+, a company that is always innovating. ",
+                ingredients: "",
+                benefits: [""],
+                usage: "Apply to clean, dry skin twice daily (morning & evening). Gently massage until fully absorbed for best results. Use consistently for visible improvement in texture and radiance.",
+                price: 120.99,
+                rating: 4.9,
+                reviews: 231,
+                image: "/image/qe.png",
+                size: "500ml"
+            },
+
+        ];
+
+        // Cart State
+        let cart = {
+            items: [],
+            isOpen: false,
+            itemCount: 0,
+            total: 0
+        };
+
+        // Current filter state
+        let currentCategory = 'all';
+        let currentSubcategory = null;
+        let currentProductModal = null;
+
+        // DOM Elements
+        const header = document.getElementById('header');
+        const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+        const mobileFullMenu = document.getElementById('mobile-full-menu');
+        const closeMobileMenuBtn = document.getElementById('close-mobile-menu');
+        const cartButton = document.getElementById('cart-button');
+        const cartCount = document.getElementById('cart-count');
+        const cartDrawer = document.getElementById('cart-drawer');
+        const cartBackdrop = document.getElementById('cart-backdrop');
+        const closeCart = document.getElementById('close-cart');
+        const cartItems = document.getElementById('cart-items');
+        const cartFooter = document.getElementById('cart-footer');
+        const cartTotal = document.getElementById('cart-total');
+        const continueShopping = document.getElementById('continue-shopping');
+        const continueShopping2 = document.getElementById('continue-shopping-2');
+        const productGrid = document.getElementById('product-grid');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+        const sidebarCategories = document.querySelectorAll('.sidebar-category');
+        const sidebarSubcategories = document.querySelectorAll('.sidebar-subcategory');
+        const sidebarCategoriesMobile = document.querySelectorAll('.sidebar-category-mobile');
+        const mainHeroImage = document.getElementById('main-hero-image');
+        const particlesContainer = document.getElementById('particles-container');
+        const productModal = document.getElementById('product-modal');
+        const closeProductModal = document.getElementById('close-product-modal');
+        const productModalContent = document.getElementById('product-modal-content');
+
+        // Initialize the app
+        function init() {
+            // Render all products initially
+            renderProducts(products);
+            
+            // Set up event listeners
+            setupEventListeners();
+            
+            // Update cart from localStorage if available
+            loadCartFromStorage();
+            
+            // Initialize animations
+            initAnimations();
+            
+            // Create particles
+            createParticles();
+            
+            // Rotate hero images
+            startHeroImageRotation();
+        }
+
+        // Create animated particles
+        function createParticles() {
+            const colors = ['#fce7f3', '#fef3c7', '#d4af37', '#a16281'];
+            for (let i = 0; i < 25; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = `${Math.random() * 12 + 3}px`;
+                particle.style.height = particle.style.width;
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.opacity = Math.random() * 0.5 + 0.1;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.animation = `float ${Math.random() * 15 + 5}s ease-in-out infinite`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Rotate hero images
+        // function startHeroImageRotation() {
+        //     const images = [
+        //         'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80',
+        //         'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80',
+        //         'https://images.unsplash.com/photo-1629198720835-6d1db8c6e88f?w=800&q=80',
+        //         'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=800&q=80',
+        //         'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=800&q=80'
+        //     ];
+            
+        //     let currentIndex = 0;
+            
+        //     setInterval(() => {
+        //         currentIndex = (currentIndex + 1) % images.length;
+        //         mainHeroImage.style.opacity = '0';
+                
+        //         setTimeout(() => {
+        //             mainHeroImage.src = images[currentIndex];
+        //             mainHeroImage.style.opacity = '1';
+        //             mainHeroImage.style.transition = 'opacity 0.8s ease-in-out';
+        //         }, 500);
+        //     }, 6000);
+        // }
+
+        // // Initialize animations
+        // function initAnimations() {
+        //     // Add staggered animation to product cards
+        //     const productCards = document.querySelectorAll('.product-card');
+        //     productCards.forEach((card, index) => {
+        //         card.style.animationDelay = `${index * 0.1}s`;
+        //     });
+        // }
+
+        // Set up all event listeners
+        function setupEventListeners() {
+            // Mobile menu toggle
+            mobileMenuIcon.addEventListener('click', toggleMobileMenu);
+            closeMobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            
+            // Close mobile menu when clicking links
+            mobileFullMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', toggleMobileMenu);
+            });
+            
+            // Cart interactions
+            cartButton.addEventListener('click', openCart);
+            closeCart.addEventListener('click', closeCartDrawer);
+            cartBackdrop.addEventListener('click', closeCartDrawer);
+            continueShopping.addEventListener('click', closeCartDrawer);
+            continueShopping2.addEventListener('click', closeCartDrawer);
+            
+            // Product modal
+            closeProductModal.addEventListener('click', closeProductModalFunc);
+            productModal.addEventListener('click', (e) => {
+                if (e.target === productModal) {
+                    closeProductModalFunc();
+                }
+            });
+            
+            // Sidebar category filtering
+            sidebarCategories.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.getAttribute('data-category');
+                    setActiveCategory(category);
+                });
+            });
+            
+            // Sidebar subcategory filtering
+            sidebarSubcategories.forEach(button => {
+                button.addEventListener('click', () => {
+                    const subcategory = button.getAttribute('data-category');
+                    filterBySubcategory(subcategory);
+                });
+            });
+            
+            // Mobile sidebar category filtering
+            sidebarCategoriesMobile.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.getAttribute('data-category');
+                    setActiveCategory(category);
+                    
+                    // Update mobile buttons active state
+                    sidebarCategoriesMobile.forEach(btn => {
+                        btn.classList.remove('bg-pink-50', 'text-pink-600');
+                        btn.classList.add('text-gray-600', 'hover:bg-gray-100');
+                    });
+                    button.classList.remove('text-gray-600', 'hover:bg-gray-100');
+                    button.classList.add('bg-pink-50', 'text-pink-600');
+                });
+            });
+            
+            // Close cart when pressing ESC
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && cart.isOpen) {
+                    closeCartDrawer();
+                }
+                if (e.key === 'Escape' && mobileFullMenu.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
+                if (e.key === 'Escape' && productModal.classList.contains('active')) {
+                    closeProductModalFunc();
+                }
+            });
+            
+            // Initialize "All" category as active
+            setActiveCategory('all');
+        }
+
+        // Product Modal Functions
+        function openProductModal(product) {
+            currentProductModal = product;
+            productModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Create modal content
+            const benefitsHTML = product.benefits ? product.benefits.map(benefit => `
+                <li class="flex items-center gap-2">
+                    <i class="fas fa-check text-pink-500 w-4 h-4"></i>
+                    <span>${benefit}</span>
+                </li>
+            `).join('') : '';
+            
+            const modalHTML = `
+                <div class="grid lg:grid-cols-2 gap-8 p-8">
+                    <!-- Product Images -->
+                    <div class="space-y-4">
+                        <div class="rounded-2xl overflow-hidden bg-gray-100">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-auto">
+                        </div>
+                        <div class="grid grid-cols-4 gap-2">
+                            <div class="rounded-lg overflow-hidden border-2 border-pink-300">
+                                <img src="${product.image}" alt="${product.name}" class="w-full h-20 object-cover">
+                            </div>
+                            
+                           
+                        </div>
+                    </div>
+                    
+                    <!-- Product Details -->
+                    <div>
+                        <div class="mb-6">
+                            <span class="inline-block text-xs font-body text-gray-500 mb-2 uppercase tracking-wider">
+                                ${product.subcategory ? product.subcategory.replace('-', ' ') : product.category}
+                            </span>
+                            <h2 class="font-display text-3xl font-medium text-gray-900 mb-3">
+                                ${product.name}
+                            </h2>
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="flex items-center gap-2">
+                                    <div class="flex">
+                                        ${Array.from({length: 5}, (_, i) => `
+                                            <i class="fas fa-star w-4 h-4 ${i < Math.floor(product.rating) ? 'text-yellow-500' : 'text-gray-300'}"></i>
+                                        `).join('')}
+                                    </div>
+                                    <span class="font-body text-gray-600">
+                                        ${product.rating} (${product.reviews} reviews)
+                                    </span>
+                                </div>
+                                <span class="text-sm font-body text-gray-500">
+                                    • ${product.size || 'Standard Size'}
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <!-- Price -->
+                        <div class="mb-6">
+                            <p class="font-display text-4xl font-bold text-gray-900">
+                                €${product.price.toFixed(2)}
+                            </p>
+                            <p class="font-body text-sm text-gray-600">
+                                Free shipping on orders over €50
+                            </p>
+                        </div>
+                        
+                        <!-- Benefits -->
+                        <div class="mb-6">
+                            <h3 class="font-display text-lg font-medium text-gray-900 mb-3">Key Benefits</h3>
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
+                                ${benefitsHTML}
+                            </ul>
+                        </div>
+                        
+                        <!-- Description -->
+                        <div class="mb-6">
+                            <h3 class="font-display text-lg font-medium text-gray-900 mb-3">Description</h3>
+                            <p class="font-body text-gray-600 leading-relaxed">
+                                ${product.longDescription || product.description}
+                            </p>
+                        </div>
+                        
+                      
+                        </div>
+                        
+                        <!-- Add to Cart -->
+                        <div class="space-y-4">
+                            <button id="modal-add-to-cart" class="w-full py-4 bg-gradient-to-r from-pink-600 to-pink-500 text-white font-body text-sm tracking-wide rounded-lg hover:opacity-90 transition-all flex items-center justify-center gap-2">
+                                <i class="fas fa-shopping-bag w-5 h-5"></i>
+                                Add to Cart - €${product.price.toFixed(2)}
+                            </button>
+                            
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            productModalContent.innerHTML = modalHTML;
+            
+            // Add event listener to modal add to cart button
+            document.getElementById('modal-add-to-cart').addEventListener('click', () => {
+                addToCart(product);
+                closeProductModalFunc();
+            });
+        }
+        
+        function closeProductModalFunc() {
+            productModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            currentProductModal = null;
+        }
+
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const isOpen = mobileFullMenu.classList.contains('active');
+            
+            if (isOpen) {
+                mobileFullMenu.classList.remove('active');
+                mobileMenuIcon.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            } else {
+                mobileFullMenu.classList.add('active');
+                mobileMenuIcon.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Set active category
+        function setActiveCategory(category) {
+            currentCategory = category;
+            currentSubcategory = null;
+            
+            // Update sidebar UI
+            sidebarCategories.forEach(button => {
+                button.classList.remove('active');
+                if (button.getAttribute('data-category') === category) {
+                    button.classList.add('active');
+                }
+            });
+            
+            // Update mobile sidebar
+            sidebarCategoriesMobile.forEach(button => {
+                button.classList.remove('bg-pink-50', 'text-pink-600');
+                if (button.getAttribute('data-category') === category) {
+                    button.classList.add('bg-pink-50', 'text-pink-600');
+                }
+            });
+            
+            // Filter products
+            filterProducts();
+        }
+
+        // Filter by subcategory
+        function filterBySubcategory(subcategory) {
+            currentSubcategory = subcategory;
+            filterProducts();
+        }
+
+        // Filter products based on current category and subcategory
+        function filterProducts() {
+            let filteredProducts;
+            
+            if (currentCategory === 'all') {
+                filteredProducts = products;
+            } else if (currentSubcategory) {
+                filteredProducts = products.filter(product => 
+                    product.subcategory === currentSubcategory
+                );
+            } else {
+                filteredProducts = products.filter(product => 
+                    product.category === currentCategory
+                );
+            }
+            
+            renderProducts(filteredProducts);
+        }
+
+        // Cart functions
+        function openCart() {
+            cart.isOpen = true;
+            cartDrawer.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            renderCartItems();
+        }
+
+        function closeCartDrawer() {
+            cart.isOpen = false;
+            cartDrawer.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function addToCart(product) {
+            // Check if product already exists in cart
+            const existingItem = cart.items.find(item => item.id === product.id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.items.push({
+                    ...product,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            showToast(`${product.name} added to cart`);
+        }
+
+        function removeFromCart(productId) {
+            cart.items = cart.items.filter(item => item.id !== productId);
+            updateCart();
+        }
+
+        function updateQuantity(productId, newQuantity) {
+            if (newQuantity < 1) {
+                removeFromCart(productId);
+                return;
+            }
+            
+            const item = cart.items.find(item => item.id === productId);
+            if (item) {
+                item.quantity = newQuantity;
+                updateCart();
+            }
+        }
+
+        function updateCart() {
+            // Calculate totals
+            cart.itemCount = cart.items.reduce((sum, item) => sum + item.quantity, 0);
+            cart.total = cart.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // Update UI
+            if (cart.itemCount > 0) {
+                cartCount.textContent = cart.itemCount;
+                cartCount.classList.remove('hidden');
+            } else {
+                cartCount.classList.add('hidden');
+            }
+            
+            // Save to localStorage
+            saveCartToStorage();
+            
+            // Update cart drawer if open
+            if (cart.isOpen) {
+                renderCartItems();
+            }
+        }
+
+        function renderCartItems() {
+            if (cart.items.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="flex flex-col items-center justify-center h-full text-center">
+                        <i class="fas fa-shopping-bag w-16 h-16 text-gray-300 mb-4"></i>
+                        <p class="font-display text-xl text-gray-900 mb-2">Your cart is empty</p>
+                        <p class="font-body text-sm text-gray-600 mb-6">
+                            Discover our collection of premium skincare products.
+                        </p>
+                        <button id="continue-shopping" class="px-6 py-3 border border-gray-800 text-gray-800 font-body text-sm tracking-wide rounded-lg hover:bg-gray-50 transition-colors">
+                            Continue Shopping
+                        </button>
+                    </div>
+                `;
+                
+                // Re-add event listener to the new button
+                document.getElementById('continue-shopping').addEventListener('click', closeCartDrawer);
+                cartFooter.classList.add('hidden');
+            } else {
+                let itemsHTML = '<div class="space-y-6">';
+                
+                cart.items.forEach(item => {
+                    itemsHTML += `
+                        <div class="flex gap-4">
+                            <!-- Product Image -->
+                            <div class="w-20 h-24 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
+                                <img
+                                    src="${item.image}"
+                                    alt="${item.name}"
+                                    class="w-full h-full object-cover"
+                                />
+                            </div>
+
+                            <!-- Product Info -->
+                            <div class="flex-1 min-w-0">
+                                <h3 class="font-display text-sm font-medium text-gray-900 truncate">
+                                    ${item.name}
+                                </h3>
+                                <p class="font-body text-xs text-gray-600 mb-2">
+                                    ${item.category}
+                                </p>
+                                <p class="font-body text-sm font-medium text-gray-900">
+                                    €${item.price.toFixed(2)}
+                                </p>
+
+                                <!-- Quantity Controls -->
+                                <div class="flex items-center gap-2 mt-2">
+                                    <button class="minus-btn w-7 h-7 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors" data-id="${item.id}">
+                                        <i class="fas fa-minus w-3 h-3"></i>
+                                    </button>
+                                    <span class="quantity font-body text-sm w-8 text-center" data-id="${item.id}">
+                                        ${item.quantity}
+                                    </span>
+                                    <button class="plus-btn w-7 h-7 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors" data-id="${item.id}">
+                                        <i class="fas fa-plus w-3 h-3"></i>
+                                    </button>
+                                    <button class="remove-btn ml-auto text-xs text-gray-600 hover:text-red-600 transition-colors font-body" data-id="${item.id}">
+                                        Remove
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                itemsHTML += '</div>';
+                cartItems.innerHTML = itemsHTML;
+                cartTotal.textContent = `€${cart.total.toFixed(2)}`;
+                cartFooter.classList.remove('hidden');
+                
+                // Add event listeners to cart buttons
+                document.querySelectorAll('.minus-btn').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const productId = parseInt(button.getAttribute('data-id'));
+                        const item = cart.items.find(item => item.id === productId);
+                        if (item) {
+                            updateQuantity(productId, item.quantity - 1);
+                        }
+                    });
+                });
+                
+                document.querySelectorAll('.plus-btn').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const productId = parseInt(button.getAttribute('data-id'));
+                        const item = cart.items.find(item => item.id === productId);
+                        if (item) {
+                            updateQuantity(productId, item.quantity + 1);
+                        }
+                    });
+                });
+                
+                document.querySelectorAll('.remove-btn').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const productId = parseInt(button.getAttribute('data-id'));
+                        removeFromCart(productId);
+                    });
+                });
+            }
+        }
+
+        // Product rendering
+        function renderProducts(productsToRender) {
+            productGrid.innerHTML = '';
+            
+            productsToRender.forEach((product, index) => {
+                const productElement = document.createElement('div');
+                productElement.className = 'product-card animate-fade-in-up cursor-pointer';
+                productElement.style.animationDelay = `${index * 0.1}s`;
+                productElement.setAttribute('data-product-id', product.id);
+                
+                productElement.innerHTML = `
+                    <div class="group relative bg-white rounded-xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-300 h-full">
+                        <!-- Image Container -->
+                        <div class="relative aspect-[4/5] overflow-hidden bg-gray-100">
+                            <img
+                                src="${product.image}"
+                                alt="${product.name}"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
+                            
+                            <!-- Quick Add Button -->
+                            <div class="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-black/60 to-transparent">
+                                <button class="view-details w-full h-12 bg-white text-gray-900 font-body text-sm tracking-wide rounded-lg hover:bg-gray-50 transition-all flex items-center justify-center gap-2" data-id="${product.id}">
+                                    <i class="fas fa-eye w-4 h-4"></i>
+                                    View Details
+                                </button>
+                            </div>
+
+                            <!-- Category Badge -->
+                            <div class="absolute top-4 left-4">
+                                <span class="inline-block bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-body tracking-wide text-gray-900 capitalize">
+                                    ${product.category.replace('-', ' ')}
+                                </span>
+                            </div>
+                            
+                            <!-- Rating Badge -->
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full">
+                                <div class="flex items-center gap-1">
+                                    <i class="fas fa-star w-3 h-3 text-yellow-500"></i>
+                                    <span class="text-xs font-body font-medium">${product.rating}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Info -->
+                        <div class="p-5">
+                            <div class="mb-3">
+                                <span class="inline-block text-xs font-body text-gray-500 mb-1 uppercase tracking-wider">
+                                    ${product.subcategory ? product.subcategory.replace('-', ' ') : product.category}
+                                </span>
+                                <h3 class="font-display text-lg font-medium text-gray-900 group-hover:text-pink-600 transition-colors line-clamp-2 mb-2">
+                                    ${product.name}
+                                </h3>
+                                <p class="font-body text-sm text-gray-600 line-clamp-3 mb-4">
+                                    ${product.description}
+                                </p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-body text-lg font-bold text-gray-900">
+                                        €${product.price.toFixed(2)}
+                                    </p>
+                                    <div class="flex items-center gap-1 mt-1">
+                                        <div class="flex">
+                                            ${Array.from({length: 5}, (_, i) => `
+                                                <i class="fas fa-star w-3 h-3 ${i < Math.floor(product.rating) ? 'text-yellow-500' : 'text-gray-300'}"></i>
+                                            `).join('')}
+                                        </div>
+                                        <span class="text-xs font-body text-gray-500 ml-1">
+                                            (${product.reviews})
+                                        </span>
+                                    </div>
+                                </div>
+                                <button class="add-to-cart-quick p-2 rounded-full border border-gray-300 text-gray-700 hover:bg-pink-50 hover:border-pink-300 hover:text-pink-600 transition-colors" data-id="${product.id}" title="Add to cart">
+                                    <i class="fas fa-plus w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                productGrid.appendChild(productElement);
+                
+                // Add event listeners to product card
+                const viewDetailsButton = productElement.querySelector('.view-details');
+                const quickAddButton = productElement.querySelector('.add-to-cart-quick');
+                const productImage = productElement.querySelector('img');
+                const productTitle = productElement.querySelector('h3');
+                
+                // Make entire card clickable (except buttons)
+                [productImage, productTitle].forEach(element => {
+                    element.addEventListener('click', (e) => {
+                        if (!e.target.closest('button')) {
+                            openProductModal(product);
+                        }
+                    });
+                });
+                
+                productElement.addEventListener('click', (e) => {
+                    if (!e.target.closest('button') && e.target !== quickAddButton && e.target !== viewDetailsButton) {
+                        openProductModal(product);
+                    }
+                });
+                
+                viewDetailsButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openProductModal(product);
+                });
+                
+                quickAddButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    addToCart(product);
+                });
+            });
+        }
+
+        // Toast notification
+        function showToast(message) {
+            toastMessage.textContent = message;
+            toast.classList.remove('hidden');
+            
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // LocalStorage functions
+        function saveCartToStorage() {
+            localStorage.setItem('skincareCart', JSON.stringify(cart));
+        }
+
+        function loadCartFromStorage() {
+            const savedCart = localStorage.getItem('skincareCart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCart();
+            }
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
