@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | Stainless Beauty Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #a16281;
+            --color-primary-light: #fce7f3;
+            --color-gold: #d4af37;
+            --color-cream: #fef3c7;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #fefefe;
+            color: #1a1a1a;
+        }
+        
+        .font-display {
+            font-family: 'Montserrat', serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #a16281 0%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(252, 231, 243, 0.1) 0%, rgba(254, 243, 199, 0.1) 100%);
+        }
+        
+        .gradient-border {
+            position: relative;
+            background: white;
+            border-radius: 24px;
+        }
+        
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #a16281 0%, #d4af37 100%);
+            border-radius: 26px;
+            z-index: -1;
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gradient-border:hover::before {
+            opacity: 0.6;
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Mobile Menu Styles */
+        .menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 60;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 300px;
+            height: 100vh;
+            background: white;
+            z-index: 70;
+            transition: right 0.3s ease;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .close-menu {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f8f8;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-menu:hover {
+            background: #f0f0f0;
+            transform: rotate(90deg);
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mobile-nav-links a {
+            padding: 0.75rem 1rem;
+            font-size: 1.1rem;
+            color: #4a4a4a;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .mobile-nav-links a i {
+            width: 24px;
+            color: #a16281;
+        }
+
+        .mobile-nav-links a:hover {
+            background: #fce7f3;
+            color: #a16281;
+            transform: translateX(5px);
+        }
+
+        .mobile-nav-links a.active {
+            background: #fce7f3;
+            color: #a16281;
+            font-weight: 500;
+        }
+
+        .mobile-menu-footer {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .mobile-shop-btn {
+            display: block;
+            padding: 1rem;
+            background: linear-gradient(135deg, #a16281 0%, #d4af37 100%);
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-shop-btn:hover {
+            opacity: 0.9;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #333;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 1024px) {
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* Terms page specific styles */
+        .terms-section {
+            scroll-margin-top: 100px;
+        }
+        
+        .terms-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(161, 98, 129, 0.1);
+        }
+        
+        .terms-card:hover {
+            box-shadow: 0 20px 60px rgba(161, 98, 129, 0.08);
+            border-color: rgba(161, 98, 129, 0.2);
+        }
+        
+        .table-of-contents {
+            position: sticky;
+            top: 100px;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+        }
+        
+        .table-of-contents a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #4a4a4a;
+            font-size: 0.9rem;
+            border-left: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .table-of-contents a:hover {
+            color: #a16281;
+            border-left-color: #a16281;
+            background: rgba(161, 98, 129, 0.05);
+        }
+        
+        .table-of-contents a.active {
+            color: #a16281;
+            border-left-color: #a16281;
+            font-weight: 500;
+            background: rgba(161, 98, 129, 0.08);
+        }
+        
+        .last-updated {
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            background: rgba(161, 98, 129, 0.1);
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #a16281;
+            font-weight: 500;
+        }
+
+        .legal-highlight {
+            background: linear-gradient(135deg, rgba(161, 98, 129, 0.05) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border-left: 4px solid #a16281;
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <span class="font-display text-xl font-semibold gradient-text">Menu</span>
+            <div class="close-menu" id="closeMenu">
+                <i class="fas fa-times text-gray-600"></i>
+            </div>
+        </div>
+
+        <div class="mobile-nav-links">
+            <a href="index.html">
+                <i class="fas fa-home"></i>
+                Home
+            </a>
+            <a href="#shop">
+                <i class="fas fa-shopping-bag"></i>
+                Shop
+            </a>
+            <a href="collection.html">
+                <i class="fas fa-layer-group"></i>
+                Collections
+            </a>
+            <a href="#about">
+                <i class="fas fa-info-circle"></i>
+                About
+            </a>
+            <a href="contact.html">
+                <i class="fas fa-envelope"></i>
+                Contact
+            </a>
+            <a href="privacy-policy.html">
+                <i class="fas fa-shield-alt"></i>
+                Privacy Policy
+            </a>
+            <a href="terms.html" class="active">
+                <i class="fas fa-file-contract"></i>
+                Terms of Service
+            </a>
+        </div>
+
+        <div class="mobile-menu-footer">
+            <div class="space-y-4">
+                <div class="flex items-center gap-3 text-sm text-gray-600">
+                    <i class="fas fa-phone text-pink-600"></i>
+                    <span>+39 389 011 8330</span>
+                </div>
+                <div class="flex items-center gap-3 text-sm text-gray-600">
+                    <i class="fas fa-envelope text-pink-600"></i>
+                    <span>hello@stainlessbeauty.com</span>
+                </div>
+                <div class="flex justify-around pt-4">
+                    <a href="#" class="text-gray-600 hover:text-pink-600 transition-colors">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-pink-600 transition-colors">
+                        <i class="fab fa-tiktok text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-pink-600 transition-colors">
+                        <i class="fab fa-pinterest text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-3">
+                    <img src="stainless-removebg-preview.png" alt="Stainless Beauty Home" class="h-10">
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="index.html" class="font-body text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                        Home
+                    </a>
+                    <a href="#shop" class="font-body text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                        Shop
+                    </a>
+                    <a href="collection.html" class="font-body text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                        Collections
+                    </a>
+                    <a href="#about" class="font-body text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                        About
+                    </a>
+                    <a href="contact.html" class="font-body text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                        Contact
+                    </a>
+                    <a href="privacy-policy.html" class="font-body text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                        Privacy
+                    </a>
+                    <a href="terms.html" class="font-body text-sm text-gray-900 font-medium border-b-2 border-pink-500 pb-1">
+                        Terms
+                    </a>
+                </nav>
+
+                <!-- Right Side Icons -->
+                <div class="flex items-center gap-4">
+                    <!-- Desktop Shop Button -->
+                    <a href="index.html#shop" class="hidden lg:flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-pink-600 to-pink-500 text-white rounded-lg hover:opacity-90 transition-opacity">
+                        <i class="fas fa-shopping-bag w-4 h-4"></i>
+                        <span class="text-sm font-medium">Shop Now</span>
+                    </a>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="menu-toggle lg:hidden" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 relative overflow-hidden gradient-bg">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <span class="last-updated mb-6">Effective Date: February 2026</span>
+                <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-light mb-6">
+                    <span class="block">Terms of</span>
+                    <span class="italic gradient-text">Service</span>
+                </h1>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                    Please read these terms carefully before using our website or purchasing our products. By accessing our site, you agree to be bound by these terms.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-1/4 left-1/4 w-24 h-24 bg-gradient-to-br from-pink-100 to-rose-50 rounded-full opacity-50 floating-element"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-32 h-32 bg-gradient-to-tr from-amber-50 to-yellow-50 rounded-full opacity-30 floating-element" style="animation-delay: 1s;"></div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-12">
+                <!-- Table of Contents - Sidebar -->
+                <div class="lg:w-1/4">
+                    <div class="table-of-contents gradient-border p-6">
+                        <h3 class="font-display text-lg font-medium mb-4 flex items-center gap-2">
+                            <i class="fas fa-list text-pink-600"></i>
+                            Quick Navigation
+                        </h3>
+                        <div class="space-y-1">
+                            <a href="#acceptance" class="toc-link active" data-section="acceptance">1. Acceptance of Terms</a>
+                            <a href="#eligibility" class="toc-link" data-section="eligibility">2. Eligibility</a>
+                            <a href="#account" class="toc-link" data-section="account">3. Account Registration</a>
+                            <a href="#products" class="toc-link" data-section="products">4. Products & Ingredients</a>
+                            <a href="#orders" class="toc-link" data-section="orders">5. Orders & Payment</a>
+                            <a href="#shipping" class="toc-link" data-section="shipping">6. Shipping & Delivery</a>
+                            <a href="#returns" class="toc-link" data-section="returns">7. Returns & Refunds</a>
+                            <a href="#intellectual" class="toc-link" data-section="intellectual">8. Intellectual Property</a>
+                            <a href="#user-content" class="toc-link" data-section="user-content">9. User Content</a>
+                            <a href="#prohibited" class="toc-link" data-section="prohibited">10. Prohibited Activities</a>
+                            <a href="#disclaimers" class="toc-link" data-section="disclaimers">11. Disclaimers</a>
+                            <a href="#limitation" class="toc-link" data-section="limitation">12. Limitation of Liability</a>
+                            <a href="#indemnification" class="toc-link" data-section="indemnification">13. Indemnification</a>
+                            <a href="#termination" class="toc-link" data-section="termination">14. Termination</a>
+                            <a href="#governing" class="toc-link" data-section="governing">15. Governing Law</a>
+                            <a href="#changes" class="toc-link" data-section="changes">16. Changes to Terms</a>
+                            <!-- <a href="#contact" class="toc-link" data-section="contact">17. Contact Information</a> -->
+                        </div>
+                        
+                        <!-- <div class="mt-6 pt-6 border-t border-gray-100">
+                            <div class="flex items-center gap-3 text-sm text-gray-600 mb-3">
+                                <i class="fas fa-file-pdf text-pink-600"></i>
+                                <a href="#" class="hover:text-pink-600 transition-colors">Download PDF Version</a>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-gray-600">
+                                <i class="fas fa-print text-pink-600"></i>
+                                <a href="#" onclick="window.print(); return false;" class="hover:text-pink-600 transition-colors">Print Terms</a>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+
+                <!-- Main Terms Content -->
+                <div class="lg:w-3/4 space-y-8">
+                    <!-- Acceptance of Terms -->
+                    <section id="acceptance" class="terms-section terms-card">
+                        <h2 class="font-display text-2xl font-medium mb-4 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-100 to-rose-50 flex items-center justify-center text-pink-600 text-sm font-bold">1</span>
+                            Acceptance of Terms
+                        </h2>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>Welcome to Stainless Beauty Home. By accessing or using our website, purchasing our products, or interacting with our services, you agree to be bound by these Terms of Service ("Terms"). If you do not agree with any part of these Terms, you may not access the website or use our services.</p>
+                            <p>These Terms constitute a legally binding agreement between you and Stainless Beauty Home ("we," "our," or "us"). Please read them carefully.</p>
+                            <div class="legal-highlight mt-4">
+                                <p class="text-sm"><span class="font-semibold text-pink-800">Important:</span> Your use of our website and purchase of our products constitutes your acknowledgment that you have read, understood, and agree to be bound by these Terms.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Eligibility -->
+                    <section id="eligibility" class="terms-section terms-card">
+                        <h2 class="font-display text-2xl font-medium mb-4 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-100 to-rose-50 flex items-center justify-center text-pink-600 text-sm font-bold">2</span>
+                            Eligibility
+                        </h2>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>By using our services, you represent and warrant that:</p>
+                            <ul class="list-disc list-inside space-y-2 ml-4">
+                                <li>You are at least 18 years of age or the age of majority in your jurisdiction</li>
+                                <li>You have the legal capacity to enter into a binding contract</li>
+                                <li>All information you provide is accurate, current, and complete</li>
+                                <li>You will maintain the security of your account information</li>
+                                <li>Your use of our services complies with all applicable laws and regulations</li>
+                            </ul>
+                            <p class="mt-4">If you are under 18, you may use our website only with the involvement of a parent or guardian.</p>
+                        </div>
+                    </section>
+
+                    <!-- Account Registration -->
+                    <section id="account" class="terms-section terms-card">
+                        <h2 class="font-display text-2xl font-medium mb-4 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-100 to-rose-50 flex items-center justify-center text-pink-600 text-sm font-bold">3</span>
+                            Account Registration
+                        </h2>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>To access certain features of our website, you may need to create an account. You are responsible for:</p>
+                            
+                            <div class="grid md:grid-cols-2 gap-4 mt-4">
+                                <div class="border border-gray-100 rounded-xl p-4">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <i class="fas fa-user-lock text-pink-600"></i>
+                                        <h3 class="font-medium text-gray-800">Account Security</h3>
+                                    </div>
+                                    <p class="text-sm">Maintaining the confidentiality of your password and account credentials.</p>
+                                </div>
+                                
+                                <div class="border border-gray-100 rounded-xl p-4">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <i class="fas fa-clock text-pink-600"></i>
+                                        <h3 class="font-medium text-gray-800">Activity Monitoring</h3>
+                                    </div>
+                                    <p class="text-sm">All activities that occur under your account, whether authorized by you or not.</p>
+                                </div>
+                                
+                                <div class="border border-gray-100 rounded-xl p-4">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <i class="fas fa-bell text-pink-600"></i>
+                                        <h3 class="font-medium text-gray-800">Notification</h3>
+                                    </div>
+                                    <p class="text-sm">Immediately notifying us of any unauthorized use or security breach.</p>
+                                </div>
+                                
+                                <div class="border border-gray-100 rounded-xl p-4">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <i class="fas fa-check-circle text-pink-600"></i>
+                                        <h3 class="font-medium text-gray-800">Accuracy</h3>
+                                    </div>
+                                    <p class="text-sm">Ensuring all account information is accurate and up-to-date.</p>
+                                </div>
+                            </div>
+                            
+                            <p class="text-sm mt-4">We reserve the right to suspend or terminate accounts that violate these Terms or for any other reason at our sole discretion.</p>
+                        </div>
+                    </section>
+
+                    <!-- Products & Ingredients -->
+                    <section id="products" class="terms-section terms-card">
+                        <h2 class="font-display text-2xl font-medium mb-4 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-100 to-rose-50 flex items-center justify-center text-pink-600 text-sm font-bold">4</span>
+                            Products & Ingredients
+                        </h2>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>All products sold by Stainless Beauty Home are for external use only unless otherwise specified. By purchasing our products, you acknowledge and agree to the following:</p>
+                            
+                            <div class="overflow-x-auto mt-6">
+                                <table class="w-full text-sm">
+                                    <thead>
+                                        <tr class="border-b border-gray-200">
+                                            <th class="text-left py-3 font-medium text-gray-800">Aspect</th>
+                                            <th class="text-left py-3 font-medium text-gray-800">Details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-100">
+                                        <tr>
+                                            <td class="py-3 font-medium">Product Descriptions</td>
+                                            <td class="py-3">We strive to accurately describe our products. However, we do not warrant that descriptions are error-free, complete, or current.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 font-medium">Ingredients</td>
+                                            <td class="py-3">Full ingredient lists are provided on product pages. Customers with allergies or sensitivities should review ingredients carefully before purchase.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 font-medium">Patch Testing</td>
+                                            <td class="py-3">We recommend patch testing new products before full application, especially for those with sensitive skin.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 font-medium">Results</td>
+                                            <td class="py-3">Individual results may vary. Product effectiveness depends on various factors including skin type, consistency of use, and environmental factors.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 font-medium">Medical Claims</td>
+                                            <td class="py-3">Our products are not intended to diagnose, treat, cure, or prevent any disease. They are cosmetic products designed for skincare purposes.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="bg-amber-50 p-4 rounded-xl mt-4">
+                                <p class="text-sm flex items-start gap-2">
+                                    <i class="fas fa-exclamation-triangle text-amber-600 mt-0.5"></i>
+                                    <span><span class="font-semibold">Medical Disclaimer:</span> If you have a medical condition or concern, please consult with a dermatologist or healthcare professional before using new skincare products.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Orders & Payment -->
+                    <section id="orders" class="terms-section terms-card">
+                        <h2 class="font-display text-2xl font-medium mb-4 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-100 to-rose-50 flex items-center justify-center text-pink-600 text-sm font-bold">5</span>
+                            Orders & Payment
+                        </h2>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>When you place an order through our website, you agree to the following terms:</p>
+                            
+                            <div class="space-y-4 mt-4">
+                                <div class="border-l-4 border-pink-200 pl-4">
+                                    <h3 class="font-medium text-gray-800 mb-2">Order Acceptance</h3>
+                                    <p class="text-sm">Your receipt of an order confirmation does not constitute our acceptance of your order. We reserve the right to refuse or cancel any order for any reason, including but not limited to: product availability, errors in pricing or product descriptions, or suspicion of fraudulent activity.</p>
+                                </div>
+                                
+                                <div class="border-l-4 border-pink-200 pl-4">
+                                    <h3 class="font-medium text-gray-800 mb-2">Pricing</h3>
+                                    <p class="text-sm">All prices are listed in USD and are subject to change without notice. We strive to ensure accurate pricing, but errors may occur. If we discover an error in the price of an item you've ordered, we will inform you and give you the option to confirm the order at the correct price or cancel it.</p>
+                                </div>
+                                
+                                <div class="border-l-4 border-pink-200 pl-4">
+                                    <h3 class="font-medium text-gray-800 mb-2">Payment</h3>
+                                    <p class="text-sm">We accept various payment methods as indicated at checkout. By providing payment information, you represent that you are authorized to use the payment method and authorize us to charge the full amount of your order.</p>
+                                </div>
+                                
+                                <div class="border-l-4 border-pink-200 pl-4">
+                                    <h3 class="font-medium text-gray-800 mb-2">Taxes</h3>
+                                    <p class="text-sm">You are responsible for all applicable taxes, duties, and fees associated with your purchase, including those imposed by your jurisdiction.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Shipping & Delivery -->
+                    <section id="shipping" class="terms-section terms-card">
+                        <h2 class="font-display text-2xl font-medium mb-4 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-100 to-rose-50 flex items-center justify-center text-pink-600 text-sm font-bold">6</span>
+                            Shipping & Delivery
+                        </h2>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>Our shipping and delivery terms are as follows:</p>
+                            
+                            <div class="grid sm:grid-cols-2 gap-4 mt-4">
+                                <div class="bg-gray-50 p-4 rounded-xl">
+                                    <h3 class="font-medium text-gray-800 mb-2 flex items-center gap-2">
+                                        <i class="fas fa-truck text-pink-600"></i>
+                                        Shipping Times
+                                    </h3>
+                                    <p class="text-sm">Estimated delivery times are provided at checkout and are not guaranteed. Delays may occur due to circumstances beyond our control.</p>
+                                </div>
+                                
+                                <div class="bg-gray-50 p-4 rounded-xl">
+                                    <h3 class="font-medium text-gray-800 mb-2 flex items-center gap-2">
+                                        <i class="fas fa-globe text-pink-600"></i>
+                                        International Shipping
+                                    </h3>
+                                    <p class="text-sm">International customers are responsible for customs duties, taxes, and import fees. Delivery times may be longer for international orders.</p>
+                                </div>
+                                
+                                <div class="bg-gray-50 p-4 rounded-xl">
+                                    <h3 class="font-medium text-gray-800 mb-2 flex items-center gap-2">
+                                        <i class="fas fa-map-marker-alt text-pink-600"></i>
+                                        Address Accuracy
+                                    </h3>
+                                    <p class="text-sm">You are responsible for providing accurate shipping information. We are not liable for packages delivered to incorrect addresses provided by you.</p>
+                                </div>
+                                
+                                <div class="bg-gray-50 p-4 rounded-xl">
+                                    <h3 class="font-medium text-gray-800 mb-2 flex items-center gap-2">
+                                        <i class="fas fa-clock text-pink-600"></i>
+                                        Risk of Loss
+                                    </h3>
+                                    <p class="text-sm">Risk of loss and title for products pass to you upon our delivery to the carrier. For lost or damaged packages, please contact the carrier directly.</p>
+                                </div>
+                            </div>
+                            
+                            <p class="text-sm mt-4">For complete shipping details, please refer to our <a href="#" class="text-pink-600 hover:underline">Shipping Policy</a>.</p>
+                        </div>
+                    </section>
+
+                    <!-- Returns & Refunds -->
+                    <section id="returns" class="terms-section terms-card">
+                        <h2 class="font-display text-2xl font-medium mb-4 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-100 to-rose-50 flex items-center justify-center text-pink-600 text-sm font-bold">7</span>
+                            Returns & Refunds
+                        </h2>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>Our return and refund policy includes:</p>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm">
+                                    <thead>
+                                        <tr class="border-b border-gray-200">
+                                            <th class="text-left py-3 font-medium text-gray-800">Condition</th>
+                                            <th class="text-left py-3 font-medium text-gray-800">Timeframe</th>
+                                            <th class="text-left py-3 font-medium text-gray-800">Refund Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-100">
+                                        <tr>
+                                            <td class="py-3">Unopened, unused products</td>
+                                            <td class="py-3">Within 30 days</td>
+                                            <td class="py-3">Full refund to original payment</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3">Opened products (satisfaction guarantee)</td>
+                                            <td class="py-3">Within 14 days</td>
+                                            <td class="py-3">Full refund or store credit</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3">Damaged or defective items</td>
+                                            <td class="py-3">Within 7 days of receipt</td>
+                                            <td class="py-3">Full refund + replacement or credit</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3">Adverse reaction</td>
+                                            <td class="py-3">Within 14 days</td>
+                                            <td class="py-3">Full refund (with documentation)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <p class="text-sm mt-4">To initiate a return, please contact our customer service team. Return shipping costs are the responsibility of the customer except in cases of our error or defective products.</p>
+                            
+                            <div class="legal-highlight mt-4">
+                                <p class="text-sm"><span class="font-semibold text-pink-800">Note:</span> For hygiene reasons, we cannot accept returns of opened products unless they are defective or caused an adverse reaction. This does not affect your statutory rights.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Intellectual Property -->
+                    <section id="intellectual" class="terms-section terms-card">
+                        <h2 class="font-display text-2xl font-medium mb-4 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-100 to-rose-50 flex items-center justify-center text-pink-600 text-sm font-bold">8</span>
+                            Intellectual Property Rights
+                        </h2>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>All content on our website, including but not limited to:</p>
+                            
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
+                                <div class="text-center p-3 border border-gray-100 rounded-lg">
+                                    <i class="fas fa-copyright text-2xl text-pink-600 mb-2"></i>
+                                    <p class="text-xs">Copyrights</p>
+                                </div>
+                                <div class="text-center p-3 border border-gray-100 rounded-lg">
+                                    <i class="fas fa-trademark text-2xl text-pink-600 mb-2"></i>
+                                    <p class="text-xs">Trademarks</p>
+                                </div>
+                                <div class="text-center p-3 border border-gray-100 rounded-lg">
+                                    <i class="fas fa-image text-2xl text-pink-600 mb-2"></i>
+                                    <p class="text-xs">Photography</p>
+                                </div>
+                                <div class="text-center p-3 border border-gray-100 rounded-lg">
+                                    <i class="fas fa-font text-2xl text-pink-600 mb-2"></i>
+                                    <p class="text-xs">Typography</p>
+                                </div>
+                            </div>
+                            
+                            <p class="mt-4">...is owned by or licensed to Stainless Beauty Home and is protected by intellectual property laws. You may not reproduce, distribute, modify, create derivative works from, or exploit any content without our express written permission.</p>
+                            
+                            <p class="text-sm mt-2">The Stainless Beauty Home name, logo, and all related product names, design marks, and slogans are our trademarks or service marks.</p>
+                        </div>
+                    </section>
+
+                    <!-- User Content -->
+                    <section id="user-content" class="terms-section terms-card">
+                        <h2 class="font-display text-2xl font-medium mb-4 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-100 to-rose-50 flex items-center justify-center text-pink-600 text-sm font-bold">9</span>
+                            User Content
+                        </h2>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>When you submit reviews, comments, photos, or other content to our website, you grant us a non-exclusive, royalty-free, perpetual, irrevocable, and fully sublicensable right to use, reproduce, modify, adapt, publish, translate, create derivative works from, distribute, and display such content throughout the world in any media.</p>
+                            
+                            <p>You represent and warrant that:</p>
+                            <ul class="list-disc list-inside space-y-1 ml-4">
+                                <li>You own the content or have the right to grant this license</li>
+                                <li>The content does not violate any third-party rights</li>
+                                <li>The content is accurate and not misleading</li>
+                                <li>The content does not contain unlawful, offensive, or inappropriate material</li>
+                            </ul>
+                            
+                            <p class="text-sm mt-2">We reserve the right to remove any user content at our sole discretion.</p>
+                        </div>
+                    </section>
+
+                    <!-- Prohibited Activities -->
+                    <section id="prohibited" class="terms-section terms-card">
+                        <h2 class="font-display text-2xl font-medium mb-4 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-100 to-rose-50 flex items-center justify-center text-pink-600 text-sm font-bold">10</span>
+                            Prohibited Activities
+                        </h2>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>You agree not to engage in any of the following prohibited activities:</p>
+                            
+                            <div class="grid md:grid-cols-2 gap-3">
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-times-circle text-pink-600 mt-1"></i>
+                                    <span class="text-sm">Using our site for any illegal purpose</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-times-circle text-pink-600 mt-1"></i>
+                                    <span class="text-sm">Attempting to interfere with site security</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-times-circle text-pink-600 mt-1"></i>
+                                    <span class="text-sm">Scraping or data mining our content</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-times-circle text-pink-600 mt-1"></i>
+                                    <span class="text-sm">Impersonating any person or entity</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-times-circle text-pink-600 mt-1"></i>
+                                    <span class="text-sm">Transmitting malware or harmful code</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-times-circle text-pink-600 mt-1"></i>
+                                    <span class="text-sm">Reselling products without authorization</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-times-circle text-pink-600 mt-1"></i>
+                                    <span class="text-sm">Harassing or abusing other users</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-times-circle text-pink-600 mt-1"></i>
+                                    <span class="text-sm">Circumventing our payment systems</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Disclaimers -->
+                    <section id="disclaimers" class="terms-section terms-card">
+                        <h2 class="font-display text-2xl font-medium mb-4 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-100 to-rose-50 flex items-center justify-center text-pink-600 text-sm font-bold">11</span>
+                            Disclaimers
+                        </h2>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>YOUR USE OF OUR WEBSITE AND PRODUCTS IS AT YOUR SOLE RISK. THE WEBSITE AND ALL PRODUCTS AND SERVICES ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED.</p>
+                            
+                            <div class="bg-gray-50 p-4 rounded-xl mt-4">
+                                <p class="text-sm">TO THE FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</p>
+                            </div>
+                            
+                            <p class="text-sm mt-2">We do not warrant that:</p>
+                            <ul class="list-disc list-inside space-y-1 ml-4 text-sm">
+                                <li>The website will function uninterrupted, secure, or error-free</li>
+                                <li>Defects will be corrected</li>
+                                <li>The website or servers are free of viruses or other harmful components</li>
+                                <li>Product results will be as represented or expected</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Limitation of Liability -->
+                    <section id="limitation" class="terms-section terms-card">
+                        <h2 class="font-display text-2xl font-medium mb-4 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-100 to-rose-50 flex items-center justify-center text-pink-600 text-sm font-bold">12</span>
+                            Limitation of Liability
+                        </h2>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL STAINLESS BEAUTY HOME, ITS OFFICERS, DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO:</p>
+                            
+                            <ul class="list-disc list-inside space-y-1 ml-4">
+                                <li>Loss of profits, revenue, or data</li>
+                                <li>Personal injury or property damage</li>
+                                <li>Product allergic reactions or sensitivities</li>
+                                <li>Any unauthorized access to or use of our servers</li>
+                                <li>Any interruption or cessation of transmission</li>
+                                <li>Any bugs, viruses, or the like transmitted through our site</li>
+                            </ul>
+                            
+                            <p class="text-sm mt-4">Our total liability to you for any claim arising from or relating to these Terms or our products shall not exceed the amount you paid to us for the product giving rise to the claim.</p>
+                            
+                            <div class="legal-highlight mt-4">
+                                <p class="text-sm"><span class="font-semibold text-pink-800">Note:</span> Some jurisdictions do not allow the exclusion or limitation of certain damages, so some of the above limitations may not apply to you.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Indemnification -->
+                    <section id="indemnification" class="terms-section terms-card">
+                        <h2 class="font-display text-2xl font-medium mb-4 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-100 to-rose-50 flex items-center justify-center text-pink-600 text-sm font-bold">13</span>
+                            Indemnification
+                        </h2>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>You agree to defend, indemnify, and hold harmless Stainless Beauty Home and its officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses, including reasonable attorneys' fees, arising out of or in any way connected with:</p>
+                            
+                            <ul class="list-disc list-inside space-y-1 ml-4">
+                                <li>Your access to or use of our website</li>
+                                <li>Your violation of these Terms</li>
+                                <li>Your violation of any third-party rights</li>
+                                <li>Any content you submit to our website</li>
+                                <li>Your use of our products in a manner not intended</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Termination -->
+                    <section id="termination" class="terms-section terms-card">
+                        <h2 class="font-display text-2xl font-medium mb-4 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-100 to-rose-50 flex items-center justify-center text-pink-600 text-sm font-bold">14</span>
+                            Termination
+                        </h2>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>We reserve the right to terminate or suspend your account and access to our services immediately, without prior notice or liability, for any reason, including without limitation if you breach these Terms.</p>
+                            
+                            <p>Upon termination:</p>
+                            <ul class="list-disc list-inside space-y-1 ml-4">
+                                <li>Your right to use our services will immediately cease</li>
+                                <li>Any pending orders may be cancelled at our discretion</li>
+                                <li>Sections that by their nature should survive termination shall survive</li>
+                            </ul>
+                            
+                            <p class="text-sm mt-2">You may terminate your account at any time by contacting us or discontinuing use of our services.</p>
+                        </div>
+                    </section>
+
+                    <!-- Governing Law -->
+                    <section id="governing" class="terms-section terms-card">
+                        <h2 class="font-display text-2xl font-medium mb-4 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-100 to-rose-50 flex items-center justify-center text-pink-600 text-sm font-bold">15</span>
+                            Governing Law
+                        </h2>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>These Terms shall be governed and construed in accordance with the laws of [Your State/Country], without regard to its conflict of law provisions.</p>
+                            
+                            <p>Any legal suit, action, or proceeding arising out of or relating to these Terms or our website shall be instituted exclusively in the federal or state courts located in [Your City/State]. You waive any and all objections to the exercise of jurisdiction over you by such courts and to venue in such courts.</p>
+                            
+                            <div class="bg-gray-50 p-4 rounded-xl mt-4">
+                                <p class="text-sm flex items-center gap-2">
+                                    <i class="fas fa-gavel text-pink-600"></i>
+                                    <span><span class="font-semibold">Dispute Resolution:</span> Before filing any claim, you agree to attempt to resolve any dispute informally by contacting us first.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Changes to Terms -->
+                    <section id="changes" class="terms-section terms-card">
+                        <h2 class="font-display text-2xl font-medium mb-4 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-100 to-rose-50 flex items-center justify-center text-pink-600 text-sm font-bold">16</span>
+                            Changes to Terms
+                        </h2>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>We reserve the right to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
+                            
+                            <div class="flex items-center gap-4 p-4 bg-pink-50 rounded-xl">
+                                <i class="fas fa-bell text-2xl text-pink-600"></i>
+                                <div>
+                                    <p class="text-sm font-medium">Stay Informed</p>
+                                    <p class="text-sm text-gray-600">By continuing to access or use our website after revisions become effective, you agree to be bound by the revised terms. Please check this page periodically for updates.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Contact Information -->
+                    <!-- <section id="contact" class="terms-section terms-card">
+                        <h2 class="font-display text-2xl font-medium mb-4 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-100 to-rose-50 flex items-center justify-center text-pink-600 text-sm font-bold">17</span>
+                            Contact Information
+                        </h2>
+                        <div class="space-y-6 text-gray-600 leading-relaxed">
+                            <p>If you have any questions about these Terms, please contact us:</p>
+                            
+                            <div class="grid md:grid-cols-2 gap-6 mt-6">
+                                <div>
+                                    <h3 class="font-medium text-gray-800 mb-3 flex items-center gap-2">
+                                        <i class="fas fa-envelope text-pink-600"></i>
+                                        Email
+                                    </h3>
+                                    <p class="text-sm">
+                                        <a href="mailto:legal@stainlessbeauty.com" class="text-pink-600 hover:underline">legal@stainlessbeauty.com</a><br>
+                                        <span class="text-xs text-gray-500">Response within 48 hours</span>
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="font-medium text-gray-800 mb-3 flex items-center gap-2">
+                                        <i class="fas fa-phone text-pink-600"></i>
+                                        Phone
+                                    </h3>
+                                    <p class="text-sm">
+                                        <a href="tel:+12345678900" class="text-pink-600 hover:underline">+1 (234) 567-8900</a><br>
+                                        <span class="text-xs text-gray-500">Mon-Fri, 9AM-6PM EST</span>
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="font-medium text-gray-800 mb-3 flex items-center gap-2">
+                                        <i class="fas fa-map-marker-alt text-pink-600"></i>
+                                        Mail
+                                    </h3>
+                                    <p class="text-sm">
+                                        Stainless Beauty Home<br>
+                                        Attn: Legal Department<br>
+                                        123 Radiance Avenue<br>
+                                        Beauty District, NY 10001
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="font-medium text-gray-800 mb-3 flex items-center gap-2">
+                                        <i class="fas fa-comment text-pink-600"></i>
+                                        Contact Form
+                                    </h3>
+                                    <p class="text-sm">
+                                        Use our <a href="contact.html" class="text-pink-600 hover:underline">contact form</a><br>
+                                        <span class="text-xs text-gray-500">Select "Legal Inquiry" from the dropdown</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section> -->
+
+                    <!-- Acknowledgment -->
+                    <div class="terms-card bg-gradient-to-r from-pink-50 to-rose-50 border-none">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check-circle text-2xl text-pink-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-display text-lg font-medium mb-2">Acknowledgment</h3>
+                                <p class="text-sm text-gray-600">BY USING OUR WEBSITE OR PURCHASING OUR PRODUCTS, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS OF SERVICE AND AGREE TO BE BOUND BY THEM.</p>
+                                <p class="text-xs text-gray-500 mt-3">Last updated: February 2026</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <!-- Brand -->
+                <div>
+                    <div class="mb-6">
+                        <span class="font-display text-2xl font-semibold">Stainless</span>
+                        <br>
+                        <span class="font-display text-sm opacity-70">Beauty Home</span>
+                    </div>
+                    <p class="text-sm opacity-70 leading-relaxed mb-6">
+                        Premium skincare crafted with clean, effective ingredients for your natural radiance.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-display text-sm font-medium mb-4">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-sm opacity-70 hover:opacity-100 transition-opacity">Home</a></li>
+                        <li><a href="#shop" class="text-sm opacity-70 hover:opacity-100 transition-opacity">Shop All</a></li>
+                        <li><a href="collection.html" class="text-sm opacity-70 hover:opacity-100 transition-opacity">Collections</a></li>
+                        <li><a href="#about" class="text-sm opacity-70 hover:opacity-100 transition-opacity">About</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h4 class="font-display text-sm font-medium mb-4">Legal</h4>
+                    <ul class="space-y-3">
+                        <li><a href="privacy-policy.html" class="text-sm opacity-70 hover:opacity-100 transition-opacity">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-sm opacity-100 hover:opacity-100 transition-opacity font-medium text-white">Terms of Service</a></li>
+                        <li><a href="shipping.html" class="text-sm opacity-70 hover:opacity-100 transition-opacity">Shipping Policy</a></li>
+                        <li><a href="returns.html" class="text-sm opacity-70 hover:opacity-100 transition-opacity">Return Policy</a></li>
+                        <li><a href="cookies.html" class="text-sm opacity-70 hover:opacity-100 transition-opacity">Cookie Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="font-display text-sm font-medium mb-4">Contact</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-phone text-sm opacity-70"></i>
+                            <span class="text-sm opacity-70">+1 (234) 567-8900</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-envelope text-sm opacity-70"></i>
+                            <span class="text-sm opacity-70">hello@stainlessbeauty.com</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-map-marker-alt text-sm opacity-70 mt-1"></i>
+                            <span class="text-sm opacity-70">123 Radiance Ave<br>NY 10001</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 mt-12 pt-8 text-center">
+                <p class="text-sm opacity-50">© 2026 Stainless Beauty Home. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Functionality
+            const menuToggle = document.getElementById('menuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const closeMenu = document.getElementById('closeMenu');
+
+            function openMobileMenu() {
+                mobileMenu.classList.add('active');
+                menuOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMobileMenu() {
+                mobileMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            menuToggle.addEventListener('click', openMobileMenu);
+            closeMenu.addEventListener('click', closeMobileMenu);
+            menuOverlay.addEventListener('click', closeMobileMenu);
+
+            // Close menu on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                    closeMobileMenu();
+                }
+            });
+
+            // Table of Contents Active State on Scroll
+            const sections = document.querySelectorAll('.terms-section');
+            const navLinks = document.querySelectorAll('.toc-link');
+            
+            function updateActiveLink() {
+                let current = '';
+                const scrollPosition = window.scrollY + 120; // Offset for header
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    const href = link.getAttribute('href').substring(1);
+                    if (href === current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', updateActiveLink);
+            updateActiveLink(); // Set initial active state
+            
+            // Smooth scroll for table of contents links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add floating animation to multiple elements
+            const floatingElements = document.querySelectorAll('.floating-element');
+            floatingElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.5}s`;
+            });
+        });
+    </script>
+</body>
+</html>

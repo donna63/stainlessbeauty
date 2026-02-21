@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | Stainless Beauty Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #a16281;
+            --color-primary-light: #fce7f3;
+            --color-gold: #d4af37;
+            --color-cream: #fef3c7;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #fefefe;
+            color: #1a1a1a;
+        }
+        
+        .font-display {
+            font-family: 'Montserrat', serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #a16281 0%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(252, 231, 243, 0.1) 0%, rgba(254, 243, 199, 0.1) 100%);
+        }
+        
+        .gradient-border {
+            position: relative;
+            background: white;
+            border-radius: 24px;
+        }
+        
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #a16281 0%, #d4af37 100%);
+            border-radius: 26px;
+            z-index: -1;
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gradient-border:hover::before {
+            opacity: 0.6;
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Mobile Menu Styles */
+        .menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 60;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 300px;
+            height: 100vh;
+            background: white;
+            z-index: 70;
+            transition: right 0.3s ease;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .close-menu {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f8f8;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-menu:hover {
+            background: #f0f0f0;
+            transform: rotate(90deg);
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mobile-nav-links a {
+            padding: 0.75rem 1rem;
+            font-size: 1.1rem;
+            color: #4a4a4a;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .mobile-nav-links a i {
+            width: 24px;
+            color: #a16281;
+        }
+
+        .mobile-nav-links a:hover {
+            background: #fce7f3;
+            color: #a16281;
+            transform: translateX(5px);
+        }
+
+        .mobile-nav-links a.active {
+            background: #fce7f3;
+            color: #a16281;
+            font-weight: 500;
+        }
+
+        .mobile-menu-footer {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .mobile-shop-btn {
+            display: block;
+            padding: 1rem;
+            background: linear-gradient(135deg, #a16281 0%, #d4af37 100%);
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-shop-btn:hover {
+            opacity: 0.9;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #333;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 1024px) {
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* FAQ page specific styles */
+        .faq-section {
+            scroll-margin-top: 100px;
+        }
+        
+        .faq-category-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(161, 98, 129, 0.1);
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .faq-category-card:hover {
+            box-shadow: 0 20px 60px rgba(161, 98, 129, 0.08);
+            border-color: rgba(161, 98, 129, 0.2);
+            transform: translateY(-4px);
+        }
+        
+        .faq-category-card.active {
+            border: 2px solid #a16281;
+            background: linear-gradient(135deg, rgba(252, 231, 243, 0.3) 0%, rgba(254, 243, 199, 0.3) 100%);
+        }
+        
+        .faq-category-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fce7f3 0%, #fef3c7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(161, 98, 129, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            border-color: rgba(161, 98, 129, 0.3);
+            box-shadow: 0 5px 20px rgba(161, 98, 129, 0.05);
+        }
+        
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 500;
+            color: #2d2d2d;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+            color: #a16281;
+        }
+        
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        
+        .faq-answer.show {
+            max-height: 500px;
+            margin-top: 1.5rem;
+        }
+        
+        .search-box {
+            background: white;
+            border: 2px solid rgba(161, 98, 129, 0.2);
+            border-radius: 60px;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box:focus-within {
+            border-color: #a16281;
+            box-shadow: 0 0 0 4px rgba(161, 98, 129, 0.1);
+        }
+        
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 0 1rem;
+            font-size: 1rem;
+        }
+        
+        .category-badge {
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .badge-products { background: #fce7f3; color: #a16281; }
+        .badge-orders { background: #fef3c7; color: #b8860b; }
+        .badge-shipping { background: #dbeafe; color: #1e40af; }
+        .badge-returns { background: #fee2e2; color: #b91c1c; }
+        .badge-ingredients { background: #dcfce7; color: #166534; }
+        .badge-account { background: #f3e8ff; color: #6b21a8; }
+        
+        .category-badge:hover, .category-badge.active {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .still-have-questions {
+            background: linear-gradient(135deg, #a16281 0%, #d4af37 100%);
+            border-radius: 24px;
+            padding: 3rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .contact-option {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-option:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <span class="font-display text-xl font-semibold gradient-text">Menu</span>
+            <div class="close-menu" id="closeMenu">
+                <i class="fas fa-times text-gray-600"></i>
+            </div>
+        </div>
+
+        <div class="mobile-nav-links">
+            <a href="index.html">
+                <i class="fas fa-home"></i>
+                Home
+            </a>
+            <a href="#shop">
+                <i class="fas fa-shopping-bag"></i>
+                Shop
+            </a>
+            <a href="collection.html">
+                <i class="fas fa-layer-group"></i>
+                Collections
+            </a>
+            <a href="#about">
+                <i class="fas fa-info-circle"></i>
+                About
+            </a>
+            <a href="contact.html">
+                <i class="fas fa-envelope"></i>
+                Contact
+            </a>
+            <a href="privacy-policy.html">
+                <i class="fas fa-shield-alt"></i>
+                Privacy Policy
+            </a>
+            <a href="terms.html">
+                <i class="fas fa-file-contract"></i>
+                Terms of Service
+            </a>
+            <a href="shipping.html">
+                <i class="fas fa-truck"></i>
+                Shipping Info
+            </a>
+            <a href="faq.html" class="active">
+                <i class="fas fa-question-circle"></i>
+                FAQ
+            </a>
+        </div>
+
+        <div class="mobile-menu-footer">
+            <div class="space-y-4">
+                <div class="flex items-center gap-3 text-sm text-gray-600">
+                    <i class="fas fa-phone text-pink-600"></i>
+                    <span>+39 389 011 8330</span>
+                </div>
+                <div class="flex items-center gap-3 text-sm text-gray-600">
+                    <i class="fas fa-envelope text-pink-600"></i>
+                    <span>hello@stainlessbeauty.com</span>
+                </div>
+                <div class="flex justify-around pt-4">
+                    <a href="#" class="text-gray-600 hover:text-pink-600 transition-colors">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-pink-600 transition-colors">
+                        <i class="fab fa-tiktok text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-pink-600 transition-colors">
+                        <i class="fab fa-pinterest text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-3">
+                    <img src="stainless-removebg-preview.png" alt="Stainless Beauty Home" class="h-10">
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="index.html" class="font-body text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                        Home
+                    </a>
+                    <a href="#shop" class="font-body text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                        Shop
+                    </a>
+                    <a href="collection.html" class="font-body text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                        Collections
+                    </a>
+                    <a href="#about" class="font-body text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                        About
+                    </a>
+                    <a href="contact.html" class="font-body text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                        Contact
+                    </a>
+                    <a href="privacy-policy.html" class="font-body text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                        Privacy
+                    </a>
+                    <a href="terms.html" class="font-body text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                        Terms
+                    </a>
+                    <a href="shipping.html" class="font-body text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                        Shipping
+                    </a>
+                    <a href="faq.html" class="font-body text-sm text-gray-900 font-medium border-b-2 border-pink-500 pb-1">
+                        FAQ
+                    </a>
+                </nav>
+
+                <!-- Right Side Icons -->
+                <div class="flex items-center gap-4">
+                    <!-- Desktop Shop Button -->
+                    <a href="index.html#shop" class="hidden lg:flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-pink-600 to-pink-500 text-white rounded-lg hover:opacity-90 transition-opacity">
+                        <i class="fas fa-shopping-bag w-4 h-4"></i>
+                        <span class="text-sm font-medium">Shop Now</span>
+                    </a>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="menu-toggle lg:hidden" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 relative overflow-hidden gradient-bg">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <span class="last-updated mb-6 inline-block">Updated: February 2026</span>
+                <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-light mb-6">
+                    <span class="block">Frequently Asked</span>
+                    <span class="italic gradient-text">Questions</span>
+                </h1>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
+                    Find answers to common questions about our products, ingredients, ordering, shipping, and more.
+                </p>
+                
+                <!-- Search Bar -->
+                <div class="max-w-xl mx-auto">
+                    <div class="search-box">
+                        <i class="fas fa-search text-gray-400"></i>
+                        <input type="text" id="faqSearch" placeholder="Search for answers..." onkeyup="searchFAQs()">
+                        <button class="text-pink-600 font-medium text-sm">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-1/4 left-1/4 w-24 h-24 bg-gradient-to-br from-pink-100 to-rose-50 rounded-full opacity-50 floating-element"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-32 h-32 bg-gradient-to-tr from-amber-50 to-yellow-50 rounded-full opacity-30 floating-element" style="animation-delay: 1s;"></div>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-center gap-2">
+                <span class="category-badge badge-products active" onclick="filterByCategory('products')">Products</span>
+                <span class="category-badge badge-ingredients" onclick="filterByCategory('ingredients')">Ingredients</span>
+                <span class="category-badge badge-orders" onclick="filterByCategory('orders')">Orders</span>
+                <span class="category-badge badge-shipping" onclick="filterByCategory('shipping')">Shipping</span>
+                <span class="category-badge badge-returns" onclick="filterByCategory('returns')">Returns</span>
+                <span class="category-badge badge-account" onclick="filterByCategory('account')">Account</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main FAQ Content -->
+    <section class="py-8">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <!-- Products Category Card -->
+                <div class="faq-category-card" onclick="showCategory('products')" id="card-products">
+                    <div class="faq-category-icon">
+                        <i class="fas fa-flask text-2xl text-pink-600"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-medium mb-2">Products</h3>
+                    <p class="text-sm text-gray-600 mb-4">Questions about our skincare formulations and usage</p>
+                    <span class="text-xs text-pink-600 font-medium">12 articles →</span>
+                </div>
+                
+                <!-- Ingredients Category Card -->
+                <div class="faq-category-card" onclick="showCategory('ingredients')" id="card-ingredients">
+                    <div class="faq-category-icon">
+                        <i class="fas fa-leaf text-2xl text-pink-600"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-medium mb-2">Ingredients</h3>
+                    <p class="text-sm text-gray-600 mb-4">Learn about our clean, effective ingredients</p>
+                    <span class="text-xs text-pink-600 font-medium">8 articles →</span>
+                </div>
+                
+                <!-- Orders Category Card -->
+                <div class="faq-category-card" onclick="showCategory('orders')" id="card-orders">
+                    <div class="faq-category-icon">
+                        <i class="fas fa-shopping-bag text-2xl text-pink-600"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-medium mb-2">Orders</h3>
+                    <p class="text-sm text-gray-600 mb-4">Placing orders, payments, and order status</p>
+                    <span class="text-xs text-pink-600 font-medium">10 articles →</span>
+                </div>
+                
+                <!-- Shipping Category Card -->
+                <div class="faq-category-card" onclick="showCategory('shipping')" id="card-shipping">
+                    <div class="faq-category-icon">
+                        <i class="fas fa-truck text-2xl text-pink-600"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-medium mb-2">Shipping</h3>
+                    <p class="text-sm text-gray-600 mb-4">Delivery times, costs, and tracking</p>
+                    <span class="text-xs text-pink-600 font-medium">9 articles →</span>
+                </div>
+                
+                <!-- Returns Category Card -->
+                <div class="faq-category-card" onclick="showCategory('returns')" id="card-returns">
+                    <div class="faq-category-icon">
+                        <i class="fas fa-undo-alt text-2xl text-pink-600"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-medium mb-2">Returns</h3>
+                    <p class="text-sm text-gray-600 mb-4">Our return policy and refund process</p>
+                    <span class="text-xs text-pink-600 font-medium">6 articles →</span>
+                </div>
+                
+                <!-- Account Category Card -->
+                <div class="faq-category-card" onclick="showCategory('account')" id="card-account">
+                    <div class="faq-category-icon">
+                        <i class="fas fa-user-circle text-2xl text-pink-600"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-medium mb-2">Account</h3>
+                    <p class="text-sm text-gray-600 mb-4">Managing your account and preferences</p>
+                    <span class="text-xs text-pink-600 font-medium">7 articles →</span>
+                </div>
+            </div>
+
+            <!-- FAQ Items by Category -->
+            <div id="faqContainer">
+                <!-- Products Category -->
+                <div id="category-products" class="faq-section">
+                    <h2 class="font-display text-3xl font-medium mb-8 flex items-center gap-3">
+                        <i class="fas fa-flask text-pink-600"></i>
+                        Products
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <div class="faq-item" data-category="products">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>How do I choose the right products for my skin type?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                We recommend starting with our <a href="#" class="text-pink-600 hover:underline">Skin Quiz</a> which analyzes your skin concerns, type, and goals. Based on your answers, we'll create a personalized routine. You can also book a free virtual consultation with our skincare specialists for personalized advice.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="products">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Are your products cruelty-free?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Yes! All Stainless Beauty Home products are 100% cruelty-free. We never test on animals and we only work with suppliers who share this commitment. We are certified by PETA's Beauty Without Bunnies program.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="products">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Are your products suitable for sensitive skin?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Many of our products are formulated with sensitive skin in mind. However, we always recommend checking the ingredient list and performing a patch test before full application. If you have known allergies, please consult with your dermatologist first.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="products">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>How long does it take to see results?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Results vary by product and individual. Generally, you may notice initial improvements in 2-4 weeks with consistent use. For significant changes in skin texture, tone, or fine lines, we recommend using products for at least 8-12 weeks.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="products">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Can I use multiple products together?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Yes, our products are designed to work together in a complete skincare routine. However, we recommend introducing one new product at a time and allowing 2 weeks before adding another to monitor how your skin responds.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="products">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>What is the shelf life of your products?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Most of our products have a shelf life of 12-24 months when unopened. Once opened, we recommend using within 6-12 months depending on the product. Check the packaging for the PAO (Period After Opening) symbol.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="products">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Do you offer samples?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Yes! We include free samples with every order. You can also purchase our <a href="#" class="text-pink-600 hover:underline">Discovery Set</a> which contains mini sizes of our bestsellers to try before committing to full sizes.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ingredients Category -->
+                <div id="category-ingredients" class="faq-section hidden">
+                    <h2 class="font-display text-3xl font-medium mb-8 flex items-center gap-3">
+                        <i class="fas fa-leaf text-pink-600"></i>
+                        Ingredients
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <div class="faq-item" data-category="ingredients">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Are your ingredients natural or synthetic?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                We use a blend of high-quality natural ingredients and safe, effective synthetic compounds. We believe in "smart beauty" – using the best ingredients regardless of origin, as long as they're safe, effective, and sustainable.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="ingredients">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Do your products contain parabens?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                No, all Stainless Beauty Home products are paraben-free. We use alternative preservation systems that are gentle yet effective.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="ingredients">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Are your products fragrance-free?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Some products are fragrance-free, while others contain natural essential oils for a subtle scent. Each product page clearly indicates whether it contains fragrance. For sensitive skin, we recommend our fragrance-free options.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="ingredients">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Where do you source your ingredients?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                We source ingredients from trusted suppliers worldwide, prioritizing sustainable and ethical sources. Our key ingredients like shea butter come from women's cooperatives in Ghana, and our green tea is sourced from organic farms in Japan.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="ingredients">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Are your products non-comedogenic?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Most of our products are formulated to be non-comedogenic (won't clog pores). Products that are particularly suited for acne-prone skin are clearly labeled.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="ingredients">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Do you test on animals?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Never. We are proudly cruelty-free and never test on animals at any stage of product development. We also require our suppliers to certify that their ingredients are not tested on animals.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orders Category -->
+                <div id="category-orders" class="faq-section hidden">
+                    <h2 class="font-display text-3xl font-medium mb-8 flex items-center gap-3">
+                        <i class="fas fa-shopping-bag text-pink-600"></i>
+                        Orders
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <div class="faq-item" data-category="orders">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>How do I place an order?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Simply browse our products, add items to your cart, and proceed to checkout. You can checkout as a guest. Follow the prompts to enter your shipping and payment information.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="orders">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>What payment methods do you accept?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                We accept all major credit cards (Visa, MasterCard, American Express, Discover), PayPal, Apple Pay, Google Pay, and Shop Pay. All payments are processed securely.
+                            </div>
+                        </div>
+                        
+                        <!-- <div class="faq-item" data-category="orders">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>How can I track my order?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Once your order ships, you'll receive a confirmation email with tracking information. You can also track your order by logging into your account or visiting our <a href="shipping.html" class="text-pink-600 hover:underline">Shipping Information</a> page.
+                            </div>
+                        </div> -->
+                        
+                        <div class="faq-item" data-category="orders">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Can I modify or cancel my order?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                We process orders quickly to get them to you as soon as possible. Please contact us within 2 hours of placing your order to make changes. After that, we cannot guarantee modifications as your order may already be in fulfillment.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="orders">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Do you offer discounts for first-time customers?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Yes! New subscribers receive 15% off their first order when they sign up for our newsletter. Look for the sign-up form at the bottom of our homepage.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="orders">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Is my payment information secure?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Absolutely. Our website uses 256-bit SSL encryption and we are PCI-DSS compliant. We never store your full payment details on our servers.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shipping Category -->
+                <div id="category-shipping" class="faq-section hidden">
+                    <h2 class="font-display text-3xl font-medium mb-8 flex items-center gap-3">
+                        <i class="fas fa-truck text-pink-600"></i>
+                        Shipping
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <div class="faq-item" data-category="shipping">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>How much does shipping cost?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Shipping costs vary by location and order value. Standard shipping within the US is $5.99, or FREE for orders over $50. International rates start at $12.99. Visit our <a href="shipping.html" class="text-pink-600 hover:underline">Shipping Information</a> page for complete details.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="shipping">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>How long will it take to receive my order?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                US orders typically arrive in 3-5 business days. Express shipping takes 2 business days. International delivery ranges from 5-18 business days depending on the destination. All times are estimates from the ship date.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="shipping">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Do you ship internationally?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Yes! We ship to over 50 countries worldwide. Shipping costs and delivery times vary by location. Please note that international orders may be subject to customs duties and taxes, which are the responsibility of the customer.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="shipping">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Will I have to pay customs fees?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                International orders may be subject to import duties, taxes, and customs fees upon arrival in the destination country. These charges are determined by your local customs authority and are the responsibility of the customer. We recommend checking with your local customs office for more information.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="shipping">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>What happens if my package is lost or damaged?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                If your package hasn't arrived within the estimated timeframe or arrives damaged, please contact us immediately. We'll investigate with the carrier and either reship or refund your order based on the situation.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="shipping">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Do you ship to PO boxes?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Yes, we ship to PO boxes via USPS. However, express shipping options may require a physical street address. Please ensure your shipping address is complete and accurate to avoid delays.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Returns Category -->
+                <div id="category-returns" class="faq-section hidden">
+                    <h2 class="font-display text-3xl font-medium mb-8 flex items-center gap-3">
+                        <i class="fas fa-undo-alt text-pink-600"></i>
+                        Returns & Refunds
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <div class="faq-item" data-category="returns">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>What is your return policy?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                We offer a 30-day satisfaction guarantee on all unopened products. For opened products, we accept returns within 14 days if you experience any adverse reactions. Contact our support team to initiate a return.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="returns">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>How do I return an item?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                To initiate a return, please email us at returns@stainlessbeauty.com with your order number and reason for return. We'll provide you with a return authorization and instructions. Return shipping costs are the responsibility of the customer except in cases of our error or defective products.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="returns">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>How long do refunds take?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Once we receive and inspect your return, we'll process your refund within 5-7 business days. The refund will be issued to your original payment method. Depending on your bank, it may take an additional 3-5 business days to appear in your account.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="returns">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Can I exchange an item?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Yes, we offer exchanges for items of equal value. The fastest way is to return your original item and place a new order for the desired product. Contact our customer service team for assistance with exchanges.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="returns">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>What if I received a damaged or defective product?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                We're sorry to hear that! Please contact us within 7 days of receiving your order with photos of the damage. We'll arrange for a replacement or full refund, including return shipping costs if necessary.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account Category -->
+                <div id="category-account" class="faq-section hidden">
+                    <h2 class="font-display text-3xl font-medium mb-8 flex items-center gap-3">
+                        <i class="fas fa-user-circle text-pink-600"></i>
+                        Account
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <div class="faq-item" data-category="account">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>How do I create an account?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Click on the "Account" icon in the top right corner of our website, then select "Register." Fill in your information to create an account. You can also create an account during checkout.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="account">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>I forgot my password. What should I do?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Click on "Account" then "Forgot Password?" Enter your email address and we'll send you a link to reset your password. For security, the link expires after 24 hours.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="account">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>How do I update my account information?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Log into your account and navigate to "Account Settings." From there, you can update your name, email address, shipping addresses, and payment methods. Don't forget to save your changes.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="account">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>How do I subscribe to your newsletter?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                You can subscribe to our newsletter at the bottom of any page on our website. Enter your email address and click "Subscribe." You'll receive skincare tips, product launches, and exclusive offers.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="account">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>How do I unsubscribe from emails?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Every email we send includes an "Unsubscribe" link at the bottom. Click that link and follow the instructions. You can also update your preferences in your account settings.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="account">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>Is it safe to save my payment information?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Yes, it's safe. We use industry-standard encryption and never store full payment details on our servers. Saved payment information is tokenized for your convenience and security.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Still Have Questions -->
+            <div class="still-have-questions mt-16">
+                <h2 class="font-display text-3xl font-medium mb-4">Still Have Questions?</h2>
+                <p class="text-white/90 mb-8 max-w-xl mx-auto">We're here to help! Choose any of the options below to get in touch with our skincare specialists.</p>
+                
+                <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+                    <div class="contact-option">
+                        <i class="fas fa-phone-alt text-2xl mb-3"></i>
+                        <h3 class="font-medium text-lg mb-1">Call Us</h3>
+                        <p class="text-sm text-white/80 mb-3">Mon-Fri, 9AM-6PM EST</p>
+                        <a href="tel:+12345678900" class="text-sm font-medium hover:underline">+1 (234) 567-8900</a>
+                    </div>
+                    
+                    <div class="contact-option">
+                        <i class="fas fa-envelope text-2xl mb-3"></i>
+                        <h3 class="font-medium text-lg mb-1">Email Us</h3>
+                        <p class="text-sm text-white/80 mb-3">Response within 24 hours</p>
+                        <a href="mailto:support@stainlessbeauty.com" class="text-sm font-medium hover:underline">support@stainlessbeauty.com</a>
+                    </div>
+                    
+                    <div class="contact-option">
+                        <i class="fas fa-comment text-2xl mb-3"></i>
+                        <h3 class="font-medium text-lg mb-1">Live Chat</h3>
+                        <p class="text-sm text-white/80 mb-3">Available 24/7</p>
+                        <button class="text-sm font-medium hover:underline">Start Chat →</button>
+                    </div>
+                </div>
+                
+                <p class="mt-8 text-sm text-white/70">
+                    Or visit our <a href="contact.html" class="underline hover:text-white">Contact Page</a> for more options
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <!-- Brand -->
+                <div>
+                    <div class="mb-6">
+                        <span class="font-display text-2xl font-semibold">Stainless</span>
+                        <br>
+                        <span class="font-display text-sm opacity-70">Beauty Home</span>
+                    </div>
+                    <p class="text-sm opacity-70 leading-relaxed mb-6">
+                        Premium skincare crafted with clean, effective ingredients for your natural radiance.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-display text-sm font-medium mb-4">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-sm opacity-70 hover:opacity-100 transition-opacity">Home</a></li>
+                        <li><a href="#shop" class="text-sm opacity-70 hover:opacity-100 transition-opacity">Shop All</a></li>
+                        <li><a href="collection.html" class="text-sm opacity-70 hover:opacity-100 transition-opacity">Collections</a></li>
+                        <li><a href="#about" class="text-sm opacity-70 hover:opacity-100 transition-opacity">About</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div>
+                    <h4 class="font-display text-sm font-medium mb-4">Customer Service</h4>
+                    <ul class="space-y-3">
+                        <li><a href="contact.html" class="text-sm opacity-70 hover:opacity-100 transition-opacity">Contact Us</a></li>
+                        <li><a href="shipping.html" class="text-sm opacity-70 hover:opacity-100 transition-opacity">Shipping Info</a></li>
+                        <li><a href="returns.html" class="text-sm opacity-70 hover:opacity-100 transition-opacity">Returns & Exchanges</a></li>
+                        <li><a href="faq.html" class="text-sm opacity-100 hover:opacity-100 transition-opacity font-medium text-white">FAQ</a></li>
+                        <li><a href="tracking.html" class="text-sm opacity-70 hover:opacity-100 transition-opacity">Order Tracking</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h4 class="font-display text-sm font-medium mb-4">Legal</h4>
+                    <ul class="space-y-3">
+                        <li><a href="privacy-policy.html" class="text-sm opacity-70 hover:opacity-100 transition-opacity">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-sm opacity-70 hover:opacity-100 transition-opacity">Terms of Service</a></li>
+                        <li><a href="cookies.html" class="text-sm opacity-70 hover:opacity-100 transition-opacity">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 mt-12 pt-8 text-center">
+                <p class="text-sm opacity-50">© 2026 Stainless Beauty Home. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Functionality
+            const menuToggle = document.getElementById('menuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const closeMenu = document.getElementById('closeMenu');
+
+            function openMobileMenu() {
+                mobileMenu.classList.add('active');
+                menuOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMobileMenu() {
+                mobileMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            menuToggle.addEventListener('click', openMobileMenu);
+            closeMenu.addEventListener('click', closeMobileMenu);
+            menuOverlay.addEventListener('click', closeMobileMenu);
+
+            // Close menu on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                    closeMobileMenu();
+                }
+            });
+            
+            // Add floating animation to multiple elements
+            const floatingElements = document.querySelectorAll('.floating-element');
+            floatingElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.5}s`;
+            });
+        });
+
+        // FAQ Toggle Function
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('i');
+            
+            // Toggle current FAQ
+            answer.classList.toggle('show');
+            icon.classList.toggle('rotate-180');
+            
+            // Close other FAQs (optional - uncomment if you want only one open at a time)
+            // const allAnswers = document.querySelectorAll('.faq-answer');
+            // const allIcons = document.querySelectorAll('.faq-question i');
+            // allAnswers.forEach((ans, index) => {
+            //     if (ans !== answer) {
+            //         ans.classList.remove('show');
+            //         allIcons[index].classList.remove('rotate-180');
+            //     }
+            // });
+        }
+
+        // Show Category Function
+        function showCategory(category) {
+            // Hide all category sections
+            document.querySelectorAll('[id^="category-"]').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Show selected category
+            document.getElementById(`category-${category}`).classList.remove('hidden');
+            
+            // Update active state on category cards
+            document.querySelectorAll('.faq-category-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            document.getElementById(`card-${category}`).classList.add('active');
+            
+            // Update active state on category badges
+            document.querySelectorAll('.category-badge').forEach(badge => {
+                badge.classList.remove('active');
+            });
+            document.querySelectorAll('.category-badge').forEach(badge => {
+                if (badge.textContent.toLowerCase().includes(category)) {
+                    badge.classList.add('active');
+                }
+            });
+            
+            // Scroll to category section
+            document.getElementById(`category-${category}`).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Filter by Category Function (for badges)
+        function filterByCategory(category) {
+            showCategory(category);
+        }
+
+        // Search Function
+        function searchFAQs() {
+            const searchTerm = document.getElementById('faqSearch').value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            if (searchTerm.length < 2) {
+                // If search is too short, show all items in current category
+                faqItems.forEach(item => {
+                    item.style.display = 'block';
+                });
+                return;
+            }
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
