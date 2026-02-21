@@ -578,6 +578,208 @@
             overflow: hidden;
             aspect-ratio: 4/5;
         }
+
+
+
+        /* Search Modal */
+.search-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 80px 20px;
+}
+
+.search-modal.active {
+    display: flex;
+}
+
+.search-modal-content {
+    background: white;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: fadeInDown 0.4s ease-out;
+}
+
+.search-header {
+    padding: 20px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.search-header input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    padding: 8px 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.search-header input::placeholder {
+    color: #999;
+}
+
+.search-close {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-close:hover {
+    background: #fce7f3;
+    transform: rotate(90deg);
+}
+
+.search-results {
+    padding: 20px;
+    min-height: 200px;
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-bottom: 8px;
+    border: 1px solid transparent;
+}
+
+.search-result-item:hover {
+    background: #fce7f3;
+    border-color: #a16281;
+    transform: translateX(5px);
+}
+
+.search-result-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: #f5f5f5;
+}
+
+.search-result-info {
+    flex: 1;
+}
+
+.search-result-info h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: #1a1a1a;
+}
+
+.search-result-info p {
+    font-size: 14px;
+    color: #666;
+}
+
+.search-result-price {
+    font-weight: 600;
+    color: #a16281;
+    font-size: 16px;
+}
+
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+}
+
+.no-results i {
+    font-size: 48px;
+    color: #ccc;
+    margin-bottom: 16px;
+}
+
+.search-highlight {
+    background: #fef3c7;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.search-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    background: #fce7f3;
+    color: #a16281;
+    border-radius: 30px;
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+.recent-searches {
+    padding: 16px 20px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.recent-search-tag {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #f5f5f5;
+    border-radius: 30px;
+    font-size: 13px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.recent-search-tag:hover {
+    background: #fce7f3;
+    color: #a16281;
+}
+
+.search-stats {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed #f0f0f0;
+}
+
+/* Desktop Search Button Enhancement */
+.search-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.search-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(161, 98, 129, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.search-btn:hover::after {
+    left: 100%;
+}
     </style>
 </head>
 <body>
@@ -620,7 +822,7 @@
 
                 <!-- Right Actions -->
                 <div class="flex items-center gap-2 lg:gap-4">
-                    <button class="hidden lg:flex p-2 hover:bg-gray-100 rounded-full transition-colors">
+                    <button id="search-button" class="hidden lg:flex p-2 hover:bg-gray-100 rounded-full transition-colors search-btn">
                         <i class="fas fa-search w-5 h-5 text-gray-700"></i>
                     </button>
                     <button class="hidden lg:flex p-2 hover:bg-gray-100 rounded-full transition-colors">
@@ -636,6 +838,32 @@
             </div>
         </div>
     </header>
+
+    <!-- Search Modal - Add this after your header -->
+<div id="search-modal" class="search-modal">
+    <div class="search-modal-content">
+        <div class="search-header">
+            <i class="fas fa-search text-pink-600"></i>
+            <input type="text" id="search-input" placeholder="Search for products, ingredients, categories..." autocomplete="off">
+            <div class="search-close" id="close-search">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        
+        <div id="search-results" class="search-results">
+            <!-- Search results will appear here -->
+            <div class="text-center text-gray-500 py-8">
+                <i class="fas fa-search text-4xl text-gray-300 mb-3"></i>
+                <p>Type something to start searching</p>
+            </div>
+        </div>
+        
+        <div id="recent-searches" class="recent-searches hidden">
+            <p class="text-sm font-medium text-gray-700 mb-2">Recent Searches</p>
+            <div id="recent-tags"></div>
+        </div>
+    </div>
+</div>
 
     <!-- Mobile Full Screen Menu -->
     <div id="mobile-full-menu" class="mobile-menu-full">
@@ -735,6 +963,10 @@
                                 <i class="fas fa-chevron-right text-gray-400 text-sm"></i>
                             </div>
                         </a>
+
+                        <button id="mobile-search-button" class="lg:hidden p-2 hover:bg-gray-100 rounded-full transition-colors">
+                            <i class="fas fa-search w-5 h-5 text-gray-700"></i>
+                        </button>
                     </div>
                 </div>
                 
@@ -4497,15 +4729,19 @@
         }
 
         // Toggle mobile menu
+        // Replace your existing toggleMobileMenu function with this improved version
         function toggleMobileMenu() {
             const isOpen = mobileFullMenu.classList.contains('active');
             
             if (isOpen) {
+                // Close menu
                 mobileFullMenu.classList.remove('active');
-                mobileMenuIcon.classList.remove('active');
+                if (mobileMenuIcon) {
+                    mobileMenuIcon.classList.remove('active');
+                }
                 document.body.style.overflow = 'auto';
                 
-                // Also close products submenu
+                // Close products submenu
                 if (mobileProductsMenu && !mobileProductsMenu.classList.contains('hidden')) {
                     mobileProductsMenu.classList.add('hidden');
                     if (mobileProductsIcon) {
@@ -4513,11 +4749,40 @@
                     }
                 }
             } else {
+                // Open menu
                 mobileFullMenu.classList.add('active');
-                mobileMenuIcon.classList.add('active');
+                if (mobileMenuIcon) {
+                    mobileMenuIcon.classList.add('active');
+                }
                 document.body.style.overflow = 'hidden';
             }
         }
+
+        // Close mobile menu when clicking on any link
+        function closeMobileMenuOnClick() {
+            const mobileMenuLinks = document.querySelectorAll('.mobile-nav-links a, #mobile-products-menu a');
+            
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Don't close if it's the products dropdown toggle
+                    if (link.id === 'mobile-products-toggle') {
+                        return;
+                    }
+                    
+                    // Close the mobile menu
+                    if (mobileFullMenu && mobileFullMenu.classList.contains('active')) {
+                        mobileFullMenu.classList.remove('active');
+                        if (mobileMenuIcon) {
+                            mobileMenuIcon.classList.remove('active');
+                        }
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            });
+        }
+
+        // Call this function after your existing mobile menu initialization
+        closeMobileMenuOnClick();
 
         // Product Modal Functions
         function openProductModal(product) {
@@ -4920,6 +5185,212 @@
                 updateCart();
             }
         }
+
+
+        // ============= SEARCH FUNCTIONALITY =============
+
+// Search state
+let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+let searchTimeout = null;
+
+// DOM Elements for search
+const searchModal = document.getElementById('search-modal');
+const searchButton = document.getElementById('search-button');
+const mobileSearchButton = document.getElementById('mobile-search-button');
+const closeSearch = document.getElementById('close-search');
+const searchInput = document.getElementById('search-input');
+const searchResults = document.getElementById('search-results');
+const recentSearches = document.getElementById('recent-searches');
+const recentTags = document.getElementById('recent-tags');
+
+// Only run if search elements exist
+if (searchModal && searchButton) {
+    
+    // Open search modal
+    function openSearch() {
+        searchModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => {
+            searchInput.focus();
+        }, 100);
+        renderRecentSearches();
+    }
+
+    // Close search modal
+    function closeSearchModal() {
+        searchModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+        searchInput.value = '';
+        clearTimeout(searchTimeout);
+    }
+
+    // Search function
+    function performSearch(query) {
+        query = query.toLowerCase().trim();
+        
+        if (query.length < 2) {
+            searchResults.innerHTML = `
+                <div class="text-center text-gray-500 py-8">
+                    <i class="fas fa-search text-4xl text-gray-300 mb-3"></i>
+                    <p>Type at least 2 characters to search</p>
+                </div>
+            `;
+            return;
+        }
+
+        // Save to search history
+        if (!searchHistory.includes(query)) {
+            searchHistory.unshift(query);
+            if (searchHistory.length > 5) searchHistory.pop();
+            localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+            renderRecentSearches();
+        }
+
+        // Filter products
+        const results = products.filter(product => {
+            const searchableText = `
+                ${product.name} 
+                ${product.description} 
+                ${product.longDescription || ''} 
+                ${product.category} 
+                ${product.subcategory || ''} 
+                ${product.ingredients || ''} 
+                ${product.benefits ? product.benefits.join(' ') : ''}
+            `.toLowerCase();
+            
+            return searchableText.includes(query);
+        });
+
+        // Display results
+        displaySearchResults(results, query);
+    }
+
+    // Display search results
+    function displaySearchResults(results, query) {
+        if (results.length === 0) {
+            searchResults.innerHTML = `
+                <div class="no-results">
+                    <i class="fas fa-search"></i>
+                    <h3 class="font-display text-xl mb-2">No products found</h3>
+                    <p class="text-gray-500">We couldn't find any products matching "${query}"</p>
+                    <p class="text-sm text-gray-400 mt-4">Try different keywords or browse our categories</p>
+                </div>
+            `;
+            return;
+        }
+
+        const resultsHTML = `
+            <div class="search-stats">
+                Found <span class="font-medium text-pink-600">${results.length}</span> product${results.length > 1 ? 's' : ''} for "${query}"
+            </div>
+            ${results.slice(0, 10).map(product => `
+                <div class="search-result-item" onclick="handleSearchResultClick(${product.id})">
+                    <img src="${product.image}" alt="${product.name}" class="search-result-image">
+                    <div class="search-result-info">
+                        <h4>${highlightText(product.name, query)}</h4>
+                        <p>${highlightText(product.description.substring(0, 60) + '...', query)}</p>
+                    </div>
+                    <div class="search-result-price">
+                        €${product.price.toFixed(2)}
+                        <span class="search-badge">${product.category}</span>
+                    </div>
+                </div>
+            `).join('')}
+            ${results.length > 10 ? `
+                <div class="text-center mt-4 p-4 bg-gray-50 rounded-lg">
+                    <p class="text-sm text-gray-600">+ ${results.length - 10} more results</p>
+                    <button onclick="showFullProductGrid('all')" class="mt-2 text-pink-600 hover:underline text-sm">
+                        View all products
+                    </button>
+                </div>
+            ` : ''}
+        `;
+
+        searchResults.innerHTML = resultsHTML;
+    }
+
+    // Highlight search term in text
+    function highlightText(text, query) {
+        if (!query) return text;
+        const regex = new RegExp(`(${query})`, 'gi');
+        return text.replace(regex, '<span class="search-highlight">$1</span>');
+    }
+
+    // Handle search result click
+    window.handleSearchResultClick = function(productId) {
+        const product = products.find(p => p.id === productId);
+        if (product) {
+            closeSearchModal();
+            openProductModal(product);
+        }
+    };
+
+    // Render recent searches
+    function renderRecentSearches() {
+        if (searchHistory.length === 0) {
+            recentSearches.classList.add('hidden');
+            return;
+        }
+
+        recentSearches.classList.remove('hidden');
+        recentTags.innerHTML = searchHistory.map(term => `
+            <span class="recent-search-tag" onclick="searchRecent('${term}')">
+                <i class="fas fa-history text-xs mr-1"></i>
+                ${term}
+            </span>
+        `).join('');
+    }
+
+    // Search recent term
+    window.searchRecent = function(term) {
+        searchInput.value = term;
+        performSearch(term);
+    };
+
+    // ============= EVENT LISTENERS FOR SEARCH =============
+    
+    // Desktop search button
+    searchButton.addEventListener('click', openSearch);
+
+    // Mobile search button (if exists)
+    if (mobileSearchButton) {
+        mobileSearchButton.addEventListener('click', openSearch);
+    }
+
+    // Close search modal
+    closeSearch.addEventListener('click', closeSearchModal);
+
+    // Click outside to close
+    searchModal.addEventListener('click', (e) => {
+        if (e.target === searchModal) {
+            closeSearchModal();
+        }
+    });
+
+    // Search input with debounce
+    searchInput.addEventListener('input', (e) => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            performSearch(e.target.value);
+        }, 300);
+    });
+
+    // Search on Enter key
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            clearTimeout(searchTimeout);
+            performSearch(e.target.value);
+        }
+    });
+
+    // Escape key to close
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && searchModal.classList.contains('active')) {
+            closeSearchModal();
+        }
+    });
+}
 
         // Initialize the app when DOM is loaded
         document.addEventListener('DOMContentLoaded', init);
