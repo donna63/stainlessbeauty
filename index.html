@@ -905,7 +905,7 @@
                             </button>
                             
                             <!-- Product Categories -->
-                            <div id="mobile-products-menu" class="hidden pl-4 pb-3 space-y-3">
+                            <div id="mobile-products-menu" class="hidden pl-4 pb-3 space-y-[-10px]">
                                 <a href="#" class="block font-body text-gray-600 hover:text-pink-600 transition-colors duration-200 py-2" data-category="all">
                                     <div class="flex items-center gap-3">
                                         <i class="fas fa-boxes w-4 h-4"></i>
@@ -938,6 +938,34 @@
                                     <div class="flex items-center gap-3">
                                         <i class="fas fa-spa w-4 h-4"></i>
                                         <span>Face Care</span>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="block font-body text-gray-600 hover:text-pink-600 transition-colors duration-200 py-2" data-category="scrub">
+                                    <div class="flex items-center gap-3">
+                                    <i class="fa-brands fa-stubber"></i>
+                                        <span>Scrub</span>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="block font-body text-gray-600 hover:text-pink-600 transition-colors duration-200 py-2" data-category="soap">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fa-solid fa-soap"></i>
+                                        <span>Soap</span>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="block font-body text-gray-600 hover:text-pink-600 transition-colors duration-200 py-2" data-category="gel">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fa-brands fa-pagelines"></i>
+                                        <span>Shower Gel</span>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="block font-body text-gray-600 hover:text-pink-600 transition-colors duration-200 py-2" data-category="hair-care">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fa-solid fa-venus"></i>
+                                        <span>Hair Care</span>
                                     </div>
                                 </a>
                             </div>
@@ -1234,6 +1262,81 @@
                     </div>
                     <div class="absolute -bottom-12 -right-12 w-48 h-48 bg-gradient-to-br from-emerald-200 to-transparent rounded-full opacity-50 group-hover:opacity-70 transition-opacity"></div>
                 </div>
+
+                <!-- scrub -->
+               <div class="category-card bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-6 relative overflow-hidden group cursor-pointer" data-category="scrub">
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center mb-6">
+                            <i class="fa-brands fa-stubber text-amber-600 w-8 h-8"></i>
+                            
+                        </div>
+                        <h3 class="font-display text-2xl font-medium text-gray-900 mb-3">Scrub</h3>
+                        <p class="font-body text-gray-600 mb-4">
+                            Polishes and smooths skin by gently removing impurities and dead skin cells. Leaves your skin feeling fresh, renewed, and silky smooth.
+                        </p>
+
+                        <button class="text-amber-600 font-body text-sm font-medium flex items-center gap-2">
+                            View Products
+                            <i class="fas fa-arrow-right w-4 h-4"></i>
+                        </button>
+                    </div>
+                    <div class="absolute -bottom-12 -right-12 w-48 h-48 bg-gradient-to-br from-amber-200 to-transparent rounded-full opacity-50 group-hover:opacity-70 transition-opacity"></div>
+                </div>
+
+                <!-- soap cartegory -->
+                <div class="category-card bg-gradient-to-br from-emerald-50 to-green-50 rounded-2xl p-6 relative overflow-hidden group cursor-pointer" data-category="soap">
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center mb-6">
+                            <i class="fa-solid fa-soap text-emerald-600 w-8 h-8"></i>
+                        </div>
+                        <h3 class="font-display text-2xl font-medium text-gray-900 mb-3">Soap</h3>
+                        <p class="font-body text-gray-600 mb-4">
+                            A gentle, nourishing formula that cleanses without stripping, keeping skin soft, smooth, and healthy.
+                        </p>
+                        <button class="text-emerald-600 font-body text-sm font-medium flex items-center gap-2">
+                            View Products
+                            <i class="fas fa-arrow-right w-4 h-4"></i>
+                        </button>
+                    </div>
+                    <div class="absolute -bottom-12 -right-12 w-48 h-48 bg-gradient-to-br from-emerald-200 to-transparent rounded-full opacity-50 group-hover:opacity-70 transition-opacity"></div>
+                </div>
+
+                <!-- shower gel -->
+                <div class="category-card bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl p-6 relative overflow-hidden group cursor-pointer" data-category="gel">
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center mb-6">
+                            <i class="fa-brands fa-pagelines text-pink-600 w-8 h-8"></i>
+                        </div>
+                        <h3 class="font-display text-2xl font-medium text-gray-900 mb-3">Shower Gel</h3>
+                        <p class="font-body text-gray-600 mb-4">
+                            A luxurious, silky formula that gently cleanses and refreshes skin, leaving it feeling soft, smooth, and lightly scented.
+                        </p>
+                        <button class="text-pink-600 font-body text-sm font-medium flex items-center gap-2">
+                            View Products
+                            <i class="fas fa-arrow-right w-4 h-4"></i>
+                        </button>
+                    </div>
+                    <div class="absolute -bottom-12 -right-12 w-48 h-48 bg-gradient-to-br from-pink-200 to-transparent rounded-full opacity-50 group-hover:opacity-70 transition-opacity"></div>
+                </div>
+
+
+                <div class="category-card bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 relative overflow-hidden group cursor-pointer" data-category="hair-care">
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center mb-6">
+                            <i class="fa-solid fa-venus text-blue-600 w-8 h-8"></i>
+                        </div>
+                        <h3 class="font-display text-2xl font-medium text-gray-900 mb-3">Hair-Care</h3>
+                        <p class="font-body text-gray-600 mb-4">
+                            Nourish and revitalize your hair with our complete care system. From gentle cleansing to deep conditioning, achieve stronger, shinier, more manageable hair.
+                        </p>
+
+                        <button class="text-blue-600 font-body text-sm font-medium flex items-center gap-2">
+                            View Products
+                            <i class="fas fa-arrow-right w-4 h-4"></i>
+                        </button>
+                    </div>
+                    <div class="absolute -bottom-12 -right-12 w-48 h-48 bg-gradient-to-br from-blue-200 to-transparent rounded-full opacity-50 group-hover:opacity-70 transition-opacity"></div>
+                </div>
             </div>
 
             <!-- View All Products Button -->
@@ -1467,6 +1570,18 @@
                     <button class="sidebar-category-mobile flex-shrink-0 px-4 py-2 rounded-lg text-gray-600 font-body text-sm hover:bg-gray-100" data-category="face-care">
                         Face Care
                     </button>
+                    <button class="sidebar-category-mobile flex-shrink-0 px-4 py-2 rounded-lg text-gray-600 font-body text-sm hover:bg-gray-100" data-category="scrub">
+                        Scrub
+                    </button>
+                    <button class="sidebar-category-mobile flex-shrink-0 px-4 py-2 rounded-lg text-gray-600 font-body text-sm hover:bg-gray-100" data-category="soap">
+                        Soap
+                    </button>
+                    <button class="sidebar-category-mobile flex-shrink-0 px-4 py-2 rounded-lg text-gray-600 font-body text-sm hover:bg-gray-100" data-category="Gel">
+                        Shower Gel
+                    </button>
+                    <button class="sidebar-category-mobile flex-shrink-0 px-4 py-2 rounded-lg text-gray-600 font-body text-sm hover:bg-gray-100" data-category="hair-care">
+                        Hair Care
+                    </button>
                 </div>
             </div>
         </div>
@@ -1517,7 +1632,35 @@
                                 <i class="fas fa-spa category-icon w-4 h-4 text-gray-400"></i>
                                 <span class="font-body text-sm">Face Care</span>
                             </div>
-                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">3</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded"></span>
+                        </button>
+                        <button class="sidebar-category w-full text-left px-4 py-3 rounded-lg flex items-center justify-between transition-all" data-category="srcub">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-brands fa-stubber w-4 h-4 text-gray-400"></i>
+                                <span class="font-body text-sm">Scrub</span>
+                            </div>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded"></span>
+                        </button>
+                        <button class="sidebar-category w-full text-left px-4 py-3 rounded-lg flex items-center justify-between transition-all" data-category="soap">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-soap w-4 h-4 text-gray-400"></i>
+                                <span class="font-body text-sm">Soap</span>
+                            </div>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded"></span>
+                        </button>
+                        <button class="sidebar-category w-full text-left px-4 py-3 rounded-lg flex items-center justify-between transition-all" data-category="gel">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-brands fa-pagelines w-4 h-4 text-gray-400"></i>
+                                <span class="font-body text-sm">Shower Gel</span>
+                            </div>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded"></span>
+                        </button>
+                        <button class="sidebar-category w-full text-left px-4 py-3 rounded-lg flex items-center justify-between transition-all" data-category="hair-care">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-venus w-4 h-4 text-gray-400"></i>
+                                <span class="font-body text-sm">Hair Care</span>
+                            </div>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded"></span>
                         </button>
                     </div>
                 </div>
@@ -3693,6 +3836,7 @@
                 size: "50ml"
             },
 
+
             {
                 id: 120,
                 name: "Style Clair Lightening Body Oil",
@@ -4298,6 +4442,792 @@
                 image: "image/ult.png",
                 size: "180ml"
             },
+
+            {
+                id: 155,
+                name: "Veet Gold Whitening Sugar Scrub",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "Exfoliating whitening sugar scrub for face and body Contains sugar crystals that help remove dead skin Smooths rough, bumpy skin Paraben and Mineral Oil fre",
+                longDescription: "Exfoliating whitening sugar scrub for face and body Contains sugar crystals that help remove dead skin Smooths rough, bumpy skin Paraben and Mineral Oil fre",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:15.50,
+                rating: 4.8,
+                reviews: "",
+                image: "image/sug.png",
+                size: "500ml"
+            },
+
+            {
+                id: 156,
+                name: "Veetgold Vitamin C Extra Whitening Super Scrub",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "Antioxidant Vitamin C-rich exfoliating scrub antioxidants Help remove dead skin cells and stimulate blood flow Promotes a smoother and clearer complexion Infused with hydrating oil to keep your skin as soft and hydrated as possible",
+                longDescription: "Antioxidant Vitamin C-rich exfoliating scrub antioxidants Help remove dead skin cells and stimulate blood flow Promotes a smoother and clearer complexion Infused with hydrating oil to keep your skin as soft and hydrated as possible",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:15.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/extra.png",
+                size: "650g"
+            },
+
+            {
+                id: 157,
+                name: "Asantee Extra White Papaya & Carrot Salt Scrub ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "Brightening, exfoliating salt body scrub Revitalizes and rejuvenates the skin with every scrub Enriched with fruit extracts of Papaya and Carrot and other herbal extract leaves skin smoother, brighter and glowy",
+                longDescription: "Brightening, exfoliating salt body scrub Revitalizes and rejuvenates the skin with every scrub Enriched with fruit extracts of Papaya and Carrot and other herbal extract leaves skin smoother, brighter and glowy",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:15.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/papa.png",
+                size: "700ml"
+            },
+
+            {
+                id: 158,
+                name: "Dr. Meinaier Alpha Arbutin Sugar Scrub  ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "Moisturizing sugar body scrub Fortified with sugar, shea butter and alpha arbutin to exfoliate, brighen and repair skin Effectively polishes away dead skin and brighten skin complexion In stock",
+                longDescription: "Moisturizing sugar body scrub Fortified with sugar, shea butter and alpha arbutin to exfoliate, brighen and repair skin Effectively polishes away dead skin and brighten skin complexion In stock",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:15.50,
+                rating: 4.8,
+                reviews: "",
+                image: "image/org.png",
+                size: "650g"
+            },
+
+
+            {
+                id: 159,
+                name: "Dr. Meinaier Shea Sugar Scrub + Orange VC  ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "Moisturizing sugar body scrub Fortified with sugar, shea butter and Vitamin C to exfoliate, brighen and repair skin Effectively polishes away dead skin and brighten skin complexion",
+                longDescription: "Moisturizing sugar body scrub Fortified with sugar, shea butter and Vitamin C to exfoliate, brighen and repair skin Effectively polishes away dead skin and brighten skin complexion",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:15.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/ben.png",
+                size: "650g"
+            },
+
+
+            {
+                id: 160,
+                name: "Dr. Meinaier Dragon Fruit Sugar Scrub  ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "Moisturizing sugar body scrub Fortified with sugar, shea butter and Vitamin C to exfoliate, brighen and repair skin Effectively polishes away dead skin and brighten skin complexion",
+                longDescription: "Moisturizing sugar body scrub Fortified with sugar, shea butter and Vitamin C to exfoliate, brighen and repair skin Effectively polishes away dead skin and brighten skin complexion",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:15.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/drag.png",
+                size: "650g"
+            },
+
+            {
+                id: 161,
+                name: "Fruit of the Wokali Avocado Natural Sherbet Scrub ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "Polishing and hydrating body scrub Made of a combination of sea salt, sugar, avocado extract and hydrating oils Boost blood circulation to the skin surface Leaves skin soft, revitalized and glowing",
+                longDescription: "polishing and hydrating body scrub Made of a combination of sea salt, sugar, avocado extract and hydrating oils Boost blood circulation to the skin surface Leaves skin soft, revitalized and glowing",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:15.50,
+                rating: 4.8,
+                reviews: "",
+                image: "image/avo.png",
+                size: "600g"
+            },
+
+            {
+                id: 162,
+                name: "Fruit of the Wokali Coconut Scrub ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "Polishing and hydrating body scrub Made of a combination of sea salt, sugar, avocado extract and hydrating oils Boost blood circulation to the skin surface Leaves skin soft, revitalized and glowing",
+                longDescription: "polishing and hydrating body scrub Made of a combination of sea salt, sugar, avocado extract and hydrating oils Boost blood circulation to the skin surface Leaves skin soft, revitalized and glowing",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:15.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/conut.png",
+                size: "600g"
+            },
+
+            {
+                id: 163,
+                name: "Fruit of the Wokali Apricot Scrub  ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "Polishing and hydrating body scrub Made of a combination of sea salt, sugar, avocado extract and hydrating oils Boost blood circulation to the skin surface Leaves skin soft, revitalized and glowing",
+                longDescription: "polishing and hydrating body scrub Made of a combination of sea salt, sugar, avocado extract and hydrating oils Boost blood circulation to the skin surface Leaves skin soft, revitalized and glowing",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:15.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/cut.png",
+                size: "600g"
+            },
+
+            {
+                id: 164,
+                name: "Dr Teal’s Melatonin Sleep Scrub  ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "Body scrub that help you unwind and prepare for a peaceful night sleep Infused with the calming scent of lavender and the soothing properties of melatonin to gently exfoliate skin and promote relaxation Leaves skin feeling smooth and refreshed",
+                longDescription: "Body scrub that help you unwind and prepare for a peaceful night sleep Infused with the calming scent of lavender and the soothing properties of melatonin to gently exfoliate skin and promote relaxation Leaves skin feeling smooth and refreshed",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:14.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/teal.png",
+                size: "538g"
+            },
+
+            {
+                id: 165,
+                name: "Dr Teal’s Melatonin Sleep Scrub  ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "Deep cleansing and exfoliating body scrub with pure himalayan pink salt Removes dead skin cells, dirt, and impurities from the skin Contains nourishing oils to moisturize and prevent skin from drying out Leaves the skin feeling silky and rejuvenate",
+                longDescription: "Deep cleansing and exfoliating body scrub with pure himalayan pink salt Removes dead skin cells, dirt, and impurities from the skin Contains nourishing oils to moisturize and prevent skin from drying out Leaves the skin feeling silky and rejuvenate",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:16.50,
+                rating: 4.8,
+                reviews: "",
+                image: "image/salt.png",
+                size: "400g"
+            },
+
+            {
+                id: 166,
+                name: "Dr Teal’s Shea Sugar Scrub with Shea Butter & Almond Oil  ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "Experience self-care with Dr Teal’s Shea Sugar Scrub. The combination of shea butter, almond oil, and essential oils will leave your skin feeling pampered.",
+                longDescription: "Experience self-care with Dr Teal’s Shea Sugar Scrub. The combination of shea butter, almond oil, and essential oils will leave your skin feeling pampered.",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:15.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/dre.png",
+                size: "538g"
+            },
+
+            {
+                id: 167,
+                name: "Dr Teal’s Shea Sugar Scrub, Citrus Essential Oils and Vitamin C ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "Moisturizing sugar body scrub Brightens, moisturizes, smooth the skin and uplift the mind Enriched with Vitamin C, Citrus Essential Oils, Shea Butter, Avocado Oil",
+                longDescription: " Moisturizing sugar body scrub Brightens, moisturizes, smooth the skin and uplift the mind Enriched with Vitamin C, Citrus Essential Oils, Shea Butter, Avocado Oil",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:14.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/shea.png",
+                size: "538g"
+            },
+
+             {
+                id: 168,
+                name: "Asantee Turmeric & Ginger Salt Spa Scrub  ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "Salt scrub for body Contains natural herbal and fruit extracts ( Turmeric, Ginger, Honey) Exfoliates, revitalizes and rejuvenates the skin Naturally brightens skin  tone",
+                longDescription: "Salt scrub for body Contains natural herbal and fruit extracts ( Turmeric, Ginger, Honey) Exfoliates, revitalizes and rejuvenates the skin Naturally brightens skin  tone",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:14.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/asa.png",
+                size: "700ml"
+            },
+
+             {
+                id: 169,
+                name: "St. Ives Radiant Skin Scrub, Pink Lemon & Mandarin  ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "",
+                longDescription: "",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:13.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/st.png",
+                size: "170g"
+            },
+
+            {
+                id: 170,
+                name: "Queen Helene Mint Julep Scrub   ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: " Face scrub for oily or acne prone skin Deeply cleanses the skin, removing oils and dirt Helps unclog pores and draw out impurities Contains glycerin to keep your skin from being tight and dry",
+                longDescription: "Face scrub for oily or acne prone skin Deeply cleanses the skin, removing oils and dirt Helps unclog pores and draw out impurities Contains glycerin to keep your skin from being tight and dry",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:7.50,
+                rating: 4.8,
+                reviews: "",
+                image: "image/queen.png",
+                size: "170g"
+            },
+
+             {
+                id: 171,
+                name: "Kuu Spa Salt Scrub Bath   ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "Aromatherapy salt body scrub Exfoliates and cleanses the skin Promotes clearer, brighter complexion Available in Mangosteen, Tamarind, Apple Bath, Milk, Charcoal, Mineral and Rose flavours",
+                longDescription: "Aromatherapy salt body scrub Exfoliates and cleanses the skin Promotes clearer, brighter complexion Available in Mangosteen, Tamarind, Apple Bath, Milk, Charcoal, Mineral and Rose flavours",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:15.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/roo.png",
+                size: "450ml"
+            },
+
+
+            {
+                id: 172,
+                name: "Kuu Spa Salt Scrub Bath   ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "Aromatherapy salt body scrub Exfoliates and cleanses the skin Promotes clearer, brighter complexion Available in Mangosteen, Tamarind, Apple Bath, Milk, Charcoal, Mineral and Rose flavours",
+                longDescription: "Aromatherapy salt body scrub Exfoliates and cleanses the skin Promotes clearer, brighter complexion Available in Mangosteen, Tamarind, Apple Bath, Milk, Charcoal, Mineral and Rose flavours",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:14.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/roo2.png",
+                size: "450ml"
+            },
+
+
+
+            {
+                id: 173,
+                name: "Fruit of the Wokali Strawberry  ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "Polishing and hydrating body scrub Made of a combination of sea salt, sugar, strawberry extract and hydrating oils Boost blood circulation to the skin surface Leaves skin soft, revitalized and glowing",
+                longDescription: "Polishing and hydrating body scrub Made of a combination of sea salt, sugar, strawberry extract and hydrating oils Boost blood circulation to the skin surface Leaves skin soft, revitalized and glowing",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:15.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/straw.png",
+                size: "600g"
+            },
+
+
+            {
+                id: 174,
+                name: "Tree Hut Shea Morrocan Rose Sugar Scrub  ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "Exfoliating scrub made with real sugar and Shea Butter Helps brighten and smooth skin and enhances skin glow Polishes away dull skin Active ingredients: Shea Butter, Sugar, Rosehip Oil, Moroccan Argan Oil",
+                longDescription: "Exfoliating scrub made with real sugar and Shea Butter Helps brighten and smooth skin and enhances skin glow Polishes away dull skin Active ingredients: Shea Butter, Sugar, Rosehip Oil, Moroccan Argan Oil",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:16.50,
+                rating: 4.8,
+                reviews: "",
+                image: "image/tr.png",
+                size: "510g"
+            },
+
+             {
+                id: 175,
+                name: "Tree Hut Watermelon Shea Sugar Scrub  ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "Exfoliating scrub made with real sugar and Shea Butter Helps brighten and smooth skin and enhances skin glow Polishes away dull skin Active ingredients: Shea Butter, Sugar, Watermelon, Vegan Collagen",
+                longDescription: "Exfoliating scrub made with real sugar and Shea Butter Helps brighten and smooth skin and enhances skin glow Polishes away dull skin Active ingredients: Shea Butter, Sugar, Watermelon, Vegan Collagen",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:17.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/mel.png",
+                size: "510g"
+            },
+
+
+             {
+                id: 176,
+                name: "Tree Hut Vitamin C Shea Sugar Scrub  ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "Exfoliating scrub made with real sugar and Shea Butter Helps brighten skin and enhances skin glow Polishes away dull skin as well as get rid of strawberry skin (Keratosis pilaris) Active ingredients: Shea Butter, Sugar, Vitamin C, Alpha Hydroxy Acid",
+                longDescription: "Exfoliating scrub made with real sugar and Shea Butter Helps brighten skin and enhances skin glow Polishes away dull skin as well as get rid of strawberry skin (Keratosis pilaris) Active ingredients: Shea Butter, Sugar, Vitamin C, Alpha Hydroxy Acid",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:15.50,
+                rating: 4.8,
+                reviews: "",
+                image: "image/ss.png",
+                size: "510g"
+            },
+
+
+             {
+                id: 177,
+                name: "VEET GOLD Very Effective Veet ,,gold Face ,,&Body Coffee And Coconut'' Whitening Scrub ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "",
+                longDescription: "",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:15.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/vett.png",
+                size: "510g"
+            },
+
+             {
+                id: 178,
+                name: "Cosmo Glow White Lightening Body Scrub With Mulberry, Licorice And Niacinamide ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "",
+                longDescription: "",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:17.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/gl.png",
+                size: "475ml"
+            },
+
+            {
+                id: 179,
+                name: "Body Butter Mild Lightening Gluathione Enriched All Over Glow Bath Scrub",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "",
+                longDescription: "",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:15.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/ll.png",
+                size: "475ml"
+            },
+
+            {
+                id: 180,
+                name: "Cosmo Glow White Whitening Body Scrub With Niacinamide And Hyaluronic Acid",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "",
+                longDescription: "",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:15.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/ni.png",
+                size: "475ml"
+            },
+
+            {
+                id: 180,
+                name: "Veetgold Perfect Skin Tumeric And Peach Scrub",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "",
+                longDescription: "",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:14.00,
+                rating: 4.8,
+                reviews: "",
+                image: "image/180.png",
+                size: "475ml"
+            },
+
+
+            {
+                id: 181,
+                name: "Golden Glow Carrot and Tumeric Half Cast Sugar Scrub",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "",
+                longDescription: "",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:15.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/181.png",
+                size: "475ml"
+            },
+
+            {
+                id: 182,
+                name: "Kojic Plus Skin Lightening Body Scrub",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "",
+                longDescription: "",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:15.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/182.png",
+                size: "475ml"
+            },
+
+
+            {
+                id: 183,
+                name: "BIO NATURE Healthy Glow Ultra Lightening Sugar Scrub",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "",
+                longDescription: "",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:16.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/183.png",
+                size: "475ml"
+            },
+
+
+            {
+                id: 184,
+                name: "BLEMISH CARE ARABIAN GLOW SUPER WHITE SCRUB",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "",
+                longDescription: "",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:16.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/184.png",
+                size: "475ml"
+            },
+
+            {
+                id: 185,
+                name: "Kuu Spa Salt Scrub Bath With Hya And Vitamin C ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "",
+                longDescription: "",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:14.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/185.png",
+                size: "475ml"
+            },
+
+            {
+                id: 186,
+                name: "VeetGold Amino Acid And Glycolic Acid Whitening Scrub ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "",
+                longDescription: "",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:15.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/186.png",
+                size: "475ml"
+            },
+
+
+             {
+                id: 187,
+                name: "Morrocan Argan Vitamin C Exfoliating & Whitening Sugar Scrub ",
+                category: "scrub",
+                subcategory: "scrub",
+                description: "",
+                longDescription: "",
+                benefits:  "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:15.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/187.png",
+                size: "650ml"
+            },
+
+
+             {
+                id: 188,
+                name: "Veet Gold Vitamin C Super Whitening Oil ",
+                category: "oil",
+                subcategory: "whitening-oil",
+                description: "",
+                longDescription: "",
+                ingredients: "",
+                benefits: "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price: 28.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/188.png",
+                size: "1000ml"
+            },
+
+            {
+                id: 189,
+                name: "Veet Gold tumeric Whitening Oil ",
+                category: "oil",
+                subcategory: "whitening-oil",
+                description: "",
+                longDescription: "",
+                ingredients: "",
+                benefits: "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price: 28.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/189.png",
+                size: "1000ml"
+            },
+
+            {
+                id: 190,
+                name: "White Secret Whitening Body Oil ",
+                category: "oil",
+                subcategory: "whitening-oil",
+                description: "",
+                longDescription: "",
+                ingredients: "",
+                benefits: "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price: 5.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/190.png",
+                size: "1000ml"
+            },
+
+
+            {
+                id: 191,
+                name: "CT + Clearing therapy Extra Lightening Oil",
+                category: "oil",
+                subcategory: "whitening-oil",
+                description: "",
+                longDescription: "",
+                ingredients: " ",
+                benefits: "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price: 7.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/191.png",
+                size: "1000ml"
+            },
+
+
+             {
+                id: 192,
+                name: "Paw Paw Clarifying oil with Vitamin E and Papaya extracts",
+                category: "oil",
+                subcategory: "whitening-oil",
+                description: "",
+                longDescription: "",
+                ingredients: " ",
+                benefits: "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price: 5.50,
+                rating: 4.8,
+                reviews: "",
+                image: "image/192.png",
+                size: "1000ml"
+            },
+
+
+             {
+                id: 193,
+                name: "Jaune d' Oeuf Clarifying & Treatment Egg Yolk Body Oil",
+                category: "oil",
+                subcategory: "whitening-oil",
+                description: "",
+                longDescription: "",
+                ingredients: " ",
+                benefits: "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price: 5.50,
+                rating: 4.8,
+                reviews: "",
+                image: "image/193.png",
+                size: "1000ml"
+            },
+
+             {
+                id: 194,
+                name: "Veet Gold papaya Whitening Oil ",
+                category: "oil",
+                subcategory: "whitening-oil",
+                description: "",
+                longDescription: "",
+                ingredients: " ",
+                benefits: "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price: 26.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/194.png",
+                size: "1000ml"
+            },
+
+
+             {
+                id: 195,
+                name: "Veet Gold Carrot Whitening Oil  ",
+                category: "oil",
+                subcategory: "whitening-oil",
+                description: "",
+                longDescription: "",
+                ingredients: " ",
+                benefits: "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price: 25.55,
+                rating: 4.8,
+                reviews: "",
+                image: "image/195.png",
+                size: "1000ml"
+            },
+
+             {
+                id: 196,
+                name: "Veet Gold Almond Super Whitening Oil  ",
+                category: "oil",
+                subcategory: "whitening-oil",
+                description: "",
+                longDescription: "",
+                ingredients: " ",
+                benefits: "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price: 25.55,
+                rating: 4.8,
+                reviews: "",
+                image: "image/196.png",
+                size: "1000ml"
+            },
+
+
+
+             {
+                id: 197,
+                name: "Veet Gold Cocoa Butter Super Whitening Oil  ",
+                category: "oil",
+                subcategory: "whitening-oil",
+                description: "",
+                longDescription: "",
+                ingredients: " ",
+                benefits: "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price: 25.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/197.png",
+                size: "1000ml"
+            },
+
+            {
+                id: 198,
+                name: "Fair & White So white brightening oil  ",
+                category: "oil",
+                subcategory: "whitening-oil",
+                description: "",
+                longDescription: "",
+                ingredients: " ",
+                benefits: "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price: 11.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/198.png",
+                size: "250ml"
+            },
+
+            {
+                id: 199,
+                name: "Alpha Arbutin Lightening Face Cream (one)",
+                category: "face-care",
+                subcategory: "face-care",
+                description: "Alpha Arbutin Face Cream Promotes Even Skin Color and Healthy Highly Effective Cream for Moisturizing and removal of dark spots on the face.",
+                longDescription: " Alpha Arbutin Face Cream Promotes Even Skin Color and Healthy Highly Effective Cream for Moisturizing and removal of dark spots on the face.",
+                ingredients: "",
+                benefits: "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:15.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/199.png",
+                size: "100ml"
+            },
+
+            {
+                id: 200,
+                name: "Skin Doctor Gluta Glow Intense Whitening Antispot Face Cream plus Vitamin C",
+                category: "face-care",
+                subcategory: "face-care",
+                description: "Skin Doctor Gluta Glow Intense Whitening Antispot Face Cream plus Vitamin C is a skin-lightening face cream that aims to unify skin tone, brighten the complexion, and fade dark spots. It combines L-Glutathione and Vitamin C with ingredients like Witch Hazel to address concerns such as acne, fine lines, and uneven pigmentation, resulting in a smoother, brighter, and more even-toned face. Primary function: Brightens and lightens the skin for a more radiant complexion.",
+                longDescription: " Alpha Arbutin Face Cream Promotes Even Skin Color and Healthy Highly Effective Cream for Moisturizing and removal of dark spots on the face.Skin Doctor Gluta Glow Intense Whitening Antispot Face Cream plus Vitamin C is a skin-lightening face cream that aims to unify skin tone, brighten the complexion, and fade dark spots. It combines L-Glutathione and Vitamin C with ingredients like Witch Hazel to address concerns such as acne, fine lines, and uneven pigmentation, resulting in a smoother, brighter, and more even-toned face. Primary function: Brightens and lightens the skin for a more radiant complexion.",
+                ingredients: "",
+                benefits: "",
+                usage: "Use – after cleansing, apply proper amount onto the palm of your hand and apply it to the face, neck, back, hand and feet for a soothing massage until the skin is absorbed.",
+                price:13.99,
+                rating: 4.8,
+                reviews: "",
+                image: "image/200.png",
+                size: "100ml"
+            },
+
+
 
         ];
 
